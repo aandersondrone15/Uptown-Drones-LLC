@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Uptown Drones LLC - Professional drone services in Orlando & Central Florida." />
+  <meta name="keywords" content="drone services, aerial photography, FAA certified, Orlando, veteran owned" />
+  <meta name="author" content="Anthony Anderson - Uptown Drones LLC" />
+  <title>Uptown Drones LLC | Professional Drone Services in Orlando</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    .hero-bg { background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url('https://images.unsplash.com/photo-1473968512647-3e447244af8f'); background-size: cover; background-position: center; }
+    .btn-primary { background-color: #0056b3; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600; transition: 0.3s; }
+    .btn-primary:hover { background-color: #004494; transform: translateY(-2px); }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-xl font-bold text-blue-600">Uptown Drones LLC</div>
+      <div class="space-x-6 hidden md:flex">
+        <a href="#services" class="text-gray-700 hover:text-blue-600">Services</a>
+        <a href="#pricing" class="text-gray-700 hover:text-blue-600">Pricing</a>
+        <a href="#portfolio" class="text-gray-700 hover:text-blue-600">Portfolio</a>
+        <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-bg h-screen flex items-center justify-center text-white text-center px-4">
+    <div>
+      <span class="bg-red-600 px-4 py-1 rounded-full text-sm font-semibold inline-block mb-4">Veteran-Owned & Operated</span>
+      <h1 class="text-5xl font-bold mb-4">Precision. Grit. Aerial Clarity.</h1>
+      <p class="text-xl mb-6">Professional drone services in Orlando & Central Florida.</p>
+      <a href="#services" class="btn-primary">Explore Services</a>
+    </div>
+  </header>
+
+  <section id="services" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-4">Our Services</h2>
+      <p class="text-lg text-gray-600 mb-10">Reliable, high-quality drone work for inspections, mapping, and marketing.</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+          <i class="fas fa-search text-blue-600 text-3xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Aerial Inspections</h3>
+          <p>Roof, framing, utility checks and more — safer and faster from the sky.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+          <i class="fas fa-map text-blue-600 text-3xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Construction Mapping</h3>
+          <p>Track site progress with photogrammetry and 2D/3D maps.</p>
+        </div>
+        <div class="bg-gray-100 p-6 rounded-lg shadow-md">
+          <i class="fas fa-tower-cell text-blue-600 text-3xl mb-4"></i>
+          <h3 class="text-xl font-semibold mb-2">Cell Tower Flyovers</h3>
+          <p>HD captures for engineers and safety reviews without climbing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-bold mb-4">Portfolio</h2>
+      <p class="text-gray-600 mb-10">See some of our favorite missions from above.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <img class="rounded shadow-md" src="https://via.placeholder.com/400x250" alt="Drone shot 1">
+        <img class="rounded shadow-md" src="https://via.placeholder.com/400x250" alt="Drone shot 2">
+        <img class="rounded shadow-md" src="https://via.placeholder.com/400x250" alt="Drone shot 3">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-4">Ready to Fly?</h2>
+      <p class="text-center text-gray-600 mb-10">Book your drone flight or get a free quote today.</p>
+      <form class="max-w-2xl mx-auto grid gap-6">
+        <input type="text" placeholder="Name" class="p-4 border border-gray-300 rounded" />
+        <input type="email" placeholder="Email" class="p-4 border border-gray-300 rounded" />
+        <textarea placeholder="Project Details" rows="5" class="p-4 border border-gray-300 rounded"></textarea>
+        <button type="submit" class="btn-primary">Book Now</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="text-center">
+      <h3 class="text-xl font-semibold">Uptown Drones LLC</h3>
+      <p class="text-gray-400">Serving Orlando & Central Florida | FAA Part 107 Certified</p>
+      <p class="text-gray-500 text-sm mt-4">&copy; 2025 Uptown Drones LLC. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
 
