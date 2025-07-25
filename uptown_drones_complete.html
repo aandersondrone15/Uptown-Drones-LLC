@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uptown Drones LLC - Professional drone services in Orlando & Central Florida. FAA Part 107 certified drone pilot specializing in aerial photography, videography, mapping, and cell tower inspections.">
+    <meta name="keywords" content="drone services, Orlando drone, Central Florida drones, aerial photography, drone mapping, cell tower inspection, FAA certified drone pilot, Anthony Anderson, veteran owned">
+    <meta name="author" content="Anthony Anderson - Uptown Drones LLC">
+    <title>Uptown Drones LLC | Professional Drone Services in Orlando & Central Florida</title>
+    
+    <!-- External Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #2e8b57;
+            --accent-color: #ffa500;
+            --text-color: #333;
+            --background-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.02);
+        }
+        
+        .pricing-popular {
+            border: 2px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .pricing-popular::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .navbar-fixed {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .image-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+        }
+        
+        .feature-check {
+            color: var(--secondary-color);
+        }
+        
+        .feature-x {
+            color: #dc2626;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 navbar-fixed transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-blue-600">Uptown Drones LLC</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-blue-600 transition-colors">Pricing</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+                    <a href="#portfolio" class="text-gray-700 hover:text-blue-600 transition-colors">Portfolio</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center text-white">
+        <div class="text-center px-4">
+            <div class="mb-4">
+                <span class="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                    <i class="fas fa-star mr-2"></i>Veteran-Owned & Operated
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Uptown Drones LLC</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Precision. Grit. Aerial Clarity.</p>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Professional drone services in Orlando & Central Florida specializing in aerial photography, videography, and mapping solutions</p>
+            <a href="#services" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold inline-block hover:shadow-lg">
+                Explore Services
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Meet Your Pilot</h2>
+                    <p class="text-lg text-gray-600 mb-6">I'm a veteran with a sharp eye and strong work ethic. I built Uptown Drones LLC to help builders, brokers, and infrastructure teams get mission-ready visuals without breaking the budget.</p>
+                    <p class="text-lg text-gray-600 mb-6">I'm not a licensed surveyor, but my DJI Phantom 4 Pro V2.0 and years of flight time give me the edge you need on-site. You need shots from the sky? I'm your guy.</p>
+                    <div class="flex items-center space-x-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600">10+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600"><i class="fas fa-certificate"></i></div>
+                            <div class="text-gray-600">FAA Part 107</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-blue-600"><i class="fas fa-medal"></i></div>
+                            <div class="text-gray-600">Veteran Owned</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1593108408993-58ee9c7526ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Anthony Anderson - Professional Drone Pilot" class="rounded-lg shadow-lg mx-auto" style="width: 400px; height: 300px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Drone Services for the Real World</h2>
+                <p class="text-xl text-gray-600">Real tools. Real hustle. Real results.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: Aerial Inspections -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Aerial Inspections</h3>
+                    <p class="text-gray-600 mb-4">Check roofs, framing, utilities, and site safety from a safer vantage point.</p>
+                </div>
+
+                <!-- Service 2: Construction Progress Mapping -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Construction Progress Mapping</h3>
+                    <p class="text-gray-600 mb-4">Track what's going up and when – easy to digest and share with your team.</p>
+                </div>
+
+                <!-- Service 3: Cell Tower Flyovers -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-tower-cell"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Cell Tower Flyovers</h3>
+                    <p class="text-gray-600 mb-4">HD tower photos and angle captures for safe engineering inspections.</p>
+                    <div class="image-gallery">
+                        <img src="https://page.genspark.site/v1/base64_upload/d65b43b06b9e81b2aefac6eedf4d4f2f" alt="Cell tower inspection from aerial view">
+                        <img src="https://page.genspark.site/v1/base64_upload/9d212b334936904491a5ee9ceb15d70e" alt="Cell tower equipment detail">
+                        <img src="https://page.genspark.site/v1/base64_upload/f7c1ab506be4737c5e07ff9b299173ef" alt="Cell tower with landscape">
+                        <img src="https://page.genspark.site/v1/base64_upload/f822d4babb7508acf17b4d73c4a2c4b5" alt="Cell tower base area">
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Captured with DJI Phantom 4 PRO V2.0</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Professional Pricing Plans</h2>
+                <p class="text-xl text-gray-600">Choose the plan that fits your project needs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-lg shadow-lg p-8 pricing-card">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Basic Plan</h3>
+                        <p class="text-gray-600 mb-4">Small construction projects & site monitoring</p>
+                        <div class="text-4xl font-bold text-blue-600 mb-2">Contact</div>
+                        <div class="text-gray-600">for pricing</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>1 flight per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Basic imaging (50 images, 10-min video)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Basic 2D orthomosaic</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times feature-x mr-3"></i>
+                            <span>Volumetric Analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times feature-x mr-3"></i>
+                            <span>AI Progress Tracking</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>48-hour data delivery</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-primary text-white py-3 rounded-lg font-semibold">Get Started</button>
+                </div>
+
+                <!-- Professional Plan -->
+                <div class="bg-white rounded-lg shadow-lg p-8 pricing-card pricing-popular">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Professional Plan</h3>
+                        <p class="text-gray-600 mb-4">Mid-sized projects needing regular updates & analytics</p>
+                        <div class="text-4xl font-bold text-blue-600 mb-2">Contact</div>
+                        <div class="text-gray-600">for pricing</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>2 flights per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Advanced imaging (100+ images, 20-min video)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>High-resolution 2D & 3D mapping</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Volumetric Analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-times feature-x mr-3"></i>
+                            <span>AI Progress Tracking</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>24-hour data delivery</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-primary text-white py-3 rounded-lg font-semibold">Get Started</button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-lg shadow-lg p-8 pricing-card">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise Plan</h3>
+                        <p class="text-gray-600 mb-4">Large-scale & complex construction projects</p>
+                        <div class="text-4xl font-bold text-blue-600 mb-2">Contact</div>
+                        <div class="text-gray-600">for pricing</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>4+ flights per month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Custom imaging & analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Advanced 2D & 3D mapping</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Volumetric Analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>AI Progress Tracking</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Custom compliance & safety reporting</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>On-demand flights</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Dedicated account manager</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check feature-check mr-3"></i>
+                            <span>Custom data delivery</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-primary text-white py-3 rounded-lg font-semibold">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Visual Portfolio</h2>
+                <p class="text-xl text-gray-600">Here's what we've seen from above.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item">
+                    <img src="https://page.genspark.site/v1/base64_upload/e804223227677f463ce8b09aac441eab" alt="Luxury Beachfront Property" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay">
+                        <h3 class="text-white text-xl font-bold mb-2">Luxury Estate Showcase</h3>
+                        <p class="text-white">Premium beachfront property photography</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item">
+                    <img src="https://page.genspark.site/v1/base64_upload/440b9c7dc4fe03fda7d3a5de1f0b7ec6" alt="Construction Progress" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay">
+                        <h3 class="text-white text-xl font-bold mb-2">Construction Progress</h3>
+                        <p class="text-white">Tracking development milestones</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item">
+                    <img src="https://page.genspark.site/v1/base64_upload/f7c5fbe2f44585ffff03ef1ac88a3578" alt="Golf Course Aerial" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay">
+                        <h3 class="text-white text-xl font-bold mb-2">Golf Course Flyover</h3>
+                        <p class="text-white">Stunning course documentation</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item">
+                    <img src="https://page.genspark.site/v1/base64_upload/b3834f5efdf4ba20e743415f462aab30" alt="Festival Coverage" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay">
+                        <h3 class="text-white text-xl font-bold mb-2">Festival Coverage</h3>
+                        <p class="text-white">Community event documentation</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item">
+                    <img src="https://page.genspark.site/v1/base64_upload/5b16133e900787385585289df4d1998a" alt="Agricultural Monitoring" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay">
+                        <h3 class="text-white text-xl font-bold mb-2">Crop Assessment</h3>
+                        <p class="text-white">Agricultural monitoring services</p>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item">
+                    <img src="https://page.genspark.site/v1/base64_upload/d65b43b06b9e81b2aefac6eedf4d4f2f" alt="Cell Tower Inspection" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay">
+                        <h3 class="text-white text-xl font-bold mb-2">Infrastructure Inspection</h3>
+                        <p class="text-white">Safe, detailed tower analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Mission in the Field</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Show up on time – every time</h3>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Deliver clear, edit-ready drone imagery</h3>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Communicate like a pro (no guessing!)</h3>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Help builders visualize the job from above</h3>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="text-green-600 text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Keep safety top-of-mind</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Credentials</h2>
+                <p class="text-xl text-gray-600">Trust is earned in the air and on the ground</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">FAA Part 107 Certified</h3>
+                    <p class="text-gray-600">Issued: May 2024</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Fully Insured</h3>
+                    <p class="text-gray-600">Professional liability coverage</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                    <div class="text-red-600 text-4xl mb-4">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Veteran-Owned & Operated</h3>
+                    <p class="text-gray-600">Military precision and discipline</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Ready for Takeoff?</h2>
+                <p class="text-xl text-gray-600">Let's talk timelines, targets, and terrain. No fluff, just flight.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-blue-600 text-xl mr-4"></i>
+                            <span class="text-lg">Uptowndronesllc@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-blue-600 text-xl mr-4"></i>
+                            <span class="text-lg">(407) 448-0003</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-xl mr-4"></i>
+                            <span class="text-lg">Eustis, FL 32736</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-blue-600 text-xl mr-4"></i>
+                            <span class="text-lg">Open 24 Hours</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Details</label>
+                            <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
+                            Book Your Drone Flight
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-2xl font-bold mb-4">Uptown Drones LLC</div>
+                <p class="text-gray-400 mb-6">Professional drone services in Orlando & Central Florida</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="mailto:Uptowndronesllc@gmail.com" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-envelope text-2xl"></i>
+                    </a>
+                    <a href="tel:(407)448-0003" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-phone text-2xl"></i>
+                    </a>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-800 text-gray-400">
+                    <p>&copy; 2024 Uptown Drones LLC. All rights reserved. Veteran-Owned & Operated.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDtjKti8jC8U5Z%2FhauIsp3r1zD4rp65QVVs96ZAgiovsmHhAg1jfHNSvemCXcL66BIAZ4iRGWi1xTCPrB6pbF6RyvtrQdW53W2nKC%2FO7mppnaODvEC4STz2RQLPkcJYeN8aqboP4Bm900XLPV60SNvXNzq44IKLtE%2FvE%2FXEJEBnCnrkH4GqCYnWPq%2FeljJP0EmwRu1Yf8blJnJa%2B4UiO5z6x%2BH%2B7MUHSXdrX5D6AzRGFpKYfBRiXvchyKLkEWUzPFexpg0I1cH0ijtxaTppjhnuDkcuoPnyDfmyB5YNfB7kKpawn4rYUXlWKfZmHd46ohX0vGK4jrxUNW1L3U%2F0JohY1nenkuCm4CAPGyFBQnKIJH0ekbLm%2B0sByg8o3oSF6yMUoEqalFoy5FUVIT%2BRj%2FxCuA6MOS11F8ZGrYtwkiSyCfre86MJn7swxFrpWqzg1zLGaRWYpZml%2BenGADZmcRIpoi%2BD0CtPsmpj0UUx8G%2F1%2BEFTwWgmm5t3tK2GBX1XDm8w%3D%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDtjKti8jC8U5Z/hauIsp3r1zD4rp65QVVs96ZAgiovsmHhAg1jfHNSvemCXcL66BIAZ4iRGWi1xTCPrB6pbF6RyvtrQdW53W2nKC/O7mppnaODvEC4STz2RQLPkcJYeN8aqboP4Bm900XLPV60SNvXNzq44IKLtE/vE/XEJEBnCnrkH4GqCYnWPq/eljJP0EmwRu1Yf8blJnJa+4UiO5z6x+H+7MUHSXdrX5D6AzRGFpKYfBRiXvchyKLkEWUzPFexpg0I1cH0ijtxaTppjhnuDkcuoPnyDfmyB5YNfB7kKpawn4rYUXlWKfZmHd46ohX0vGK4jrxUNW1L3U/0JohY1nenkuCm4CAPGyFBQnKIJH0ekbLm+0sByg8o3oSF6yMUoEqalFoy5FUVIT+Rj/xCuA6MOS11F8ZGrYtwkiSyCfre86MJn7swxFrpWqzg1zLGaRWYpZml+enGADZmcRIpoi+D0CtPsmpj0UUx8G/1+EFTwWgmm5t3tK2GBX1XDm8w==";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
