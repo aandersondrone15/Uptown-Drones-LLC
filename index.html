@@ -1,1327 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Uptown Drones LLC - Professional drone services in Orlando & Central Florida. FAA Part 107 certified drone pilot specializing in aerial photography, videography, mapping, and cell tower inspections.">
-    <meta name="keywords" content="drone services, Orlando drone, Central Florida drones, aerial photography, drone mapping, cell tower inspection, FAA certified drone pilot, Anthony Anderson, veteran owned">
-    <meta name="author" content="Anthony Anderson - Uptown Drones LLC">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://uptowndrones.com/">
-    <meta property="og:title" content="Uptown Drones LLC | Professional Drone Services in Orlando & Central Florida">
-    <meta property="og:description" content="Professional drone services in Orlando & Central Florida specializing in aerial photography, videography, and mapping solutions">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://uptowndrones.com/">
-    <meta property="twitter:title" content="Uptown Drones LLC | Professional Drone Services in Orlando & Central Florida">
-    <meta property="twitter:description" content="Professional drone services in Orlando & Central Florida specializing in aerial photography, videography, and mapping solutions">
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/svgs/solid/drone.svg">
-    
-    <title>Uptown Drones LLC | Professional Drone Services in Orlando & Central Florida</title>
-    
-    <!-- External Libraries -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-color: #0056b3;
-            --secondary-color: #2e8b57;
-            --accent-color: #ffa500;
-            --text-color: #333;
-            --background-color: #f8f9fa;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        
-        .hero-bg {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .pricing-card {
-            transition: all 0.3s ease;
-        }
-        
-        .pricing-card:hover {
-            transform: scale(1.02);
-        }
-        
-        .pricing-popular {
-            border: 2px solid var(--primary-color);
-            position: relative;
-        }
-        
-        .pricing-popular::before {
-            content: "Most Popular";
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-color);
-            color: white;
-            padding: 4px 16px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-        
-        .navbar-fixed {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.95);
-        }
-        
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .image-gallery img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            loading: lazy;
-        }
-        
-        .image-gallery img:hover {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-            padding: 2rem;
-            transform: translateY(70%);
-            transition: transform 0.3s ease;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
-        
-        /* Make portfolio overlay more accessible on touch devices */
-        @media (hover: none) {
-            .portfolio-overlay {
-                transform: translateY(60%);
-            }
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #004494;
-            transform: translateY(-2px);
-        }
-        
-        .feature-check {
-            color: var(--secondary-color);
-        }
-        
-        .feature-x {
-            color: #dc2626;
-        }
-        
-        /* Add testimonial styles */
-        .testimonial-card {
-            position: relative;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        
-        .testimonial-card::before {
-            content: """;
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 5rem;
-            color: rgba(0, 86, 179, 0.1);
-            font-family: serif;
-            line-height: 1;
-        }
-        
-        /* Mobile menu styles */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.98);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transform: translateX(100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-        
-        .mobile-menu a {
-            font-size: 1.5rem;
-            margin: 1rem 0;
-            color: var(--text-color);
-            text-decoration: none;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-bg {
-                background-attachment: scroll;
-            }
-        }
-        
-        /* Blog card styles */
-        .blog-card {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* Equipment specs styles */
-        .spec-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .spec-item:last-child {
-            border-bottom: none;
-        }
-        
-        /* Service area map container */
-        .map-container {
-            height: 400px;
-            width: 100%;
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Uptown Drones LLC",
-        "description": "Professional drone services in Orlando & Central Florida specializing in aerial photography, videography, mapping, and cell tower inspections.",
-        "url": "https://uptowndrones.com",
-        "telephone": "+14074480003",
-        "email": "Uptowndronesllc@gmail.com",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Eustis",
-            "addressRegion": "FL",
-            "postalCode": "32736",
-            "addressCountry": "US"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 28.8527,
-            "longitude": -81.6853
-        },
-        "image": "https://images.unsplash.com/photo-1473968512647-3e447244af8f",
-        "sameAs": [
-            "https://www.facebook.com/uptowndrones",
-            "https://www.instagram.com/uptown_drones_llc"
-        ],
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-            ],
-            "opens": "00:00",
-            "closes": "23:59"
-        },
-        "priceRange": "$$$"
-    }
-    </script>
+<!-- Merged: Original site with updated pricing section (minimum charge model), anchor fixes, and duplicate slideshow removal -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uptown Drones LLC – Heavy Civil Aerial Progress</title>
+  <style>
+    :root { --bg:#0d0d0d; --text:#111; --muted:#666; --brand:#111; --accent:#111; --card:#fff; --line:#e8e8e8;}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;color:var(--text);background:#f7f7f7}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid var(--line);background:#fff;font-weight:600}
+    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .btn.ghost{background:#fff;color:var(--text)}
+    header{position:sticky;top:0;background:#ffffffcc;backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line);z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px}
+    .logo{display:flex;gap:10px;align-items:center}
+    .logo-badge{height:36px;width:36px;border-radius:10px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800}
+    .hero{background:linear-gradient(180deg,#fff, #f3f3f3);padding:64px 0}
+    .hero h1{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:0 0 12px 0}
+    .hero p{color:#333;margin:0 0 18px 0;font-size:clamp(16px,2vw,18px)}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#222;font-weight:600;font-size:13px}
+    .grid{display:grid;gap:18px}
+    @media (min-width: 900px){ .grid.cols-2{grid-template-columns:1.15fr 0.85fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+    section{padding:44px 0}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+    .card.pad{padding:20px}
+    .muted{color:var(--muted)}
+    .title{font-size:clamp(22px,4vw,30px);margin:0 0 10px 0}
+    .list{margin:10px 0 0 0;padding-left:18px}
+    .pricing{gap:22px}
+    .price-card{position:relative;display:flex;flex-direction:column}
+    .price{font-size:34px;font-weight:800;margin:8px 0}
+    .pill{position:absolute;right:16px;top:-10px;background:#111;color:#fff;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
+    .cta-block{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .img-wrap{overflow:hidden;border-radius:18px;border:1px solid var(--line)}
+    .img{display:block;width:100%;height:260px;object-fit:cover}
+    .why-grid{display:grid;gap:16px}
+    @media (min-width: 900px){ .why-grid{grid-template-columns:repeat(3,1fr)}}
+    footer{border-top:1px solid var(--line);padding:28px 0;margin-top:16px;background:#fff}
+    .strike{ text-decoration: line-through; opacity: .5 }
+    .persuade{background:#fafafa;border:1px dashed #d9d9d9;border-radius:14px;padding:14px;margin-top:10px}
+    .note{font-size:12px;color:#555;margin-top:10px}
+    .fade{transition:opacity .3s ease;opacity:1}
+  </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 navbar-fixed transition-all duration-300 shadow-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <i class="fas fa-drone text-blue-600 mr-2 text-2xl"></i>
-                    <div class="text-2xl font-bold text-blue-600">Uptown Drones LLC</div>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
-                    <a href="#equipment" class="text-gray-700 hover:text-blue-600 transition-colors">Equipment</a>
-                    <a href="#pricing" class="text-gray-700 hover:text-blue-600 transition-colors">Pricing</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About</a>
-                    <a href="#portfolio" class="text-gray-700 hover:text-blue-600 transition-colors">Portfolio</a>
-                    <a href="#blog" class="text-gray-700 hover:text-blue-600 transition-colors">Blog</a>
-                    <a href="#testimonials" class="text-gray-700 hover:text-blue-600 transition-colors">Testimonials</a>
-                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
-                </div>
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                    <i class="fas fa-bars text-gray-700 text-2xl"></i>
-                </button>
-            </div>
+<body>
+  <header>
+    <div class="nav container">
+      <div class="logo">
+        <div class="logo-badge">UD</div>
+        <div>
+          <div style="font-weight:800">Uptown Drones LLC</div>
+          <div class="muted" style="font-size:12px">Heavy Civil • Central Florida</div>
         </div>
-    </nav>
-    
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu">
-        <button id="close-menu" class="absolute top-5 right-5 text-3xl">&times;</button>
-        <a href="#services" class="hover:text-blue-600 transition-colors">Services</a>
-        <a href="#equipment" class="hover:text-blue-600 transition-colors">Equipment</a>
-        <a href="#pricing" class="hover:text-blue-600 transition-colors">Pricing</a>
-        <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
-        <a href="#portfolio" class="hover:text-blue-600 transition-colors">Portfolio</a>
-        <a href="#blog" class="hover:text-blue-600 transition-colors">Blog</a>
-        <a href="#testimonials" class="hover:text-blue-600 transition-colors">Testimonials</a>
-        <a href="#contact" class="hover:text-blue-600 transition-colors">Contact</a>
-        <div class="flex space-x-4 mt-8">
-            <a href="https://www.facebook.com/uptowndrones" target="_blank" class="text-2xl text-blue-600"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.instagram.com/uptown_drones_llc" target="_blank" class="text-2xl text-blue-600"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/company/uptown-drones-llc" target="_blank" class="text-2xl text-blue-600"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/uptowndronesllc" target="_blank" class="text-2xl text-blue-600"><i class="fab fa-twitter"></i></a>
-        </div>
+      </div>
+      <div class="cta-block">
+        <!-- anchor fixes from file:// to in-page anchors -->
+        <a href="#pricing" class="btn">See Pricing</a>
+        <a href="#contact" class="btn primary">Book My First Flight</a>
+      </div>
     </div>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center justify-center text-white pt-16">
-        <div class="text-center px-4">
-            <div class="mb-4">
-                <span class="inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                    <i class="fas fa-star mr-2"></i>Veteran-Owned & Operated
-                </span>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">Uptown Drones LLC</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Precision. Grit. Aerial Clarity.</p>
-            <p class="text-lg mb-8 max-w-2xl mx-auto">Professional drone services in Orlando & Central Florida specializing in aerial photography, videography, and mapping solutions</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#services" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold inline-block hover:shadow-lg">
-                    Explore Services
-                </a>
-                <a href="#contact" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold inline-block hover:shadow-lg transition-all">
-                    Get a Quote
-                </a>
-            </div>
+  <main>
+    <section class="hero">
+      <div class="container grid cols-2" style="align-items:center">
+        <div>
+          <span class="tag">Military Veteran Owned &amp; Operated</span>
+          <h1>Aerial Progress Reports That Keep Your Project Moving Forward</h1>
+          <p>Clear, consistent visuals for heavy civil and construction projects across Central Florida. <strong>FAA Part 107</strong> certified &amp; insured. Trained via DroneU <em>(Mapping, Flight Mastery, Cell Tower Inspection)</em>.</p>
+          <div class="cta-block">
+            <a href="#pricing" class="btn primary">View Project-Friendly Pricing</a>
+            <a href="#how" class="btn ghost">How It Works</a>
+          </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold text-gray-900 mb-6">Meet Your Pilot</h2>
-                    <p class="text-lg text-gray-600 mb-6">I'm Anthony Anderson, a U.S. military veteran with a sharp eye and strong work ethic. I built Uptown Drones LLC to help builders, brokers, and infrastructure teams get mission-ready visuals without breaking the budget.</p>
-                    <p class="text-lg text-gray-600 mb-6">With my FAA Part 107 certification (updated July 2025) and years of flight time, I provide professional drone services throughout Central Florida. My DJI Phantom 4 Pro V2.0 and other specialized equipment give me the edge you need on-site. You need shots from the sky? I'm your guy.</p>
-                    <div class="flex flex-wrap items-center gap-6 mt-8">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600">10+</div>
-                            <div class="text-gray-600">Years Experience</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600"><i class="fas fa-certificate"></i></div>
-                            <div class="text-gray-600">FAA Part 107</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600"><i class="fas fa-medal"></i></div>
-                            <div class="text-gray-600">Veteran Owned</div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-blue-600"><i class="fas fa-shield-alt"></i></div>
-                            <div class="text-gray-600">Fully Insured</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <img src="https://images.unsplash.com/photo-1593108408993-58ee9c7526ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Anthony Anderson - Professional Drone Pilot" class="rounded-lg shadow-lg mx-auto" style="width: 400px; height: 300px; object-fit: cover;" loading="lazy">
-                    <p class="text-sm text-gray-500 mt-2">Anthony Anderson, FAA Certified Drone Pilot</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Drone Services for the Real World</h2>
-                <p class="text-xl text-gray-600">Real tools. Real hustle. Real results.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1: Aerial Inspections -->
-                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Aerial Inspections</h3>
-                    <p class="text-gray-600 mb-4">Check roofs, framing, utilities, and site safety from a safer vantage point.</p>
-                    <div class="image-gallery">
-                        <img src="https://page.genspark.site/v1/base64_upload/e804223227677f463ce8b09aac441eab" alt="Roof inspection from aerial view" loading="lazy">
-                        <img src="https://page.genspark.site/v1/base64_upload/440b9c7dc4fe03fda7d3a5de1f0b7ec6" alt="Construction site inspection" loading="lazy">
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">High-resolution inspection imagery</p>
-                </div>
-
-                <!-- Service 2: Construction Progress Mapping -->
-                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-map"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Construction Progress Mapping</h3>
-                    <p class="text-gray-600 mb-4">Track what's going up and when - easy to digest and share with your team.</p>
-                    <div class="image-gallery">
-                        <img src="https://page.genspark.site/v1/base64_upload/440b9c7dc4fe03fda7d3a5de1f0b7ec6" alt="Construction progress aerial view" loading="lazy">
-                        <img src="https://page.genspark.site/v1/base64_upload/b3834f5efdf4ba20e743415f462aab30" alt="Construction site mapping" loading="lazy">
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">2D & 3D mapping capabilities</p>
-                </div>
-
-                <!-- Service 3: Cell Tower Flyovers -->
-                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-broadcast-tower"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Cell Tower Flyovers</h3>
-                    <p class="text-gray-600 mb-4">HD tower photos and angle captures for safe engineering inspections.</p>
-                    <div class="image-gallery">
-                        <img src="https://page.genspark.site/v1/base64_upload/d65b43b06b9e81b2aefac6eedf4d4f2f" alt="Cell tower inspection from aerial view" loading="lazy">
-                        <img src="https://page.genspark.site/v1/base64_upload/9d212b334936904491a5ee9ceb15d70e" alt="Cell tower equipment detail" loading="lazy">
-                        <img src="https://page.genspark.site/v1/base64_upload/f7c1ab506be4737c5e07ff9b299173ef" alt="Cell tower with landscape" loading="lazy">
-                        <img src="https://page.genspark.site/v1/base64_upload/f822d4babb7508acf17b4d73c4a2c4b5" alt="Cell tower base area" loading="lazy">
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">Captured with DJI Phantom 4 PRO V2.0</p>
-                </div>
-                
-                <!-- Service 4: Real Estate Photography -->
-                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Real Estate Photography</h3>
-                    <p class="text-gray-600 mb-4">Showcase properties with stunning aerial perspectives that help listings stand out.</p>
-                    <div class="image-gallery">
-                        <img src="https://page.genspark.site/v1/base64_upload/e804223227677f463ce8b09aac441eab" alt="Luxury property aerial view" loading="lazy">
-                        <img src="https://page.genspark.site/v1/base64_upload/f7c5fbe2f44585ffff03ef1ac88a3578" alt="Property with landscape features" loading="lazy">
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">Premium property marketing</p>
-                </div>
-
-                <!-- Service 5: Event Coverage -->
-                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Event Coverage</h3>
-                    <p class="text-gray-600 mb-4">Capture community events, festivals, and gatherings from unique aerial perspectives.</p>
-                    <div class="image-gallery">
-                        <img src="https://page.genspark.site/v1/base64_upload/b3834f5efdf4ba20e743415f462aab30" alt="Festival aerial coverage" loading="lazy">
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">Event documentation services</p>
-                </div>
-
-                <!-- Service 6: Agricultural Monitoring -->
-                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4">Agricultural Monitoring</h3>
-                    <p class="text-gray-600 mb-4">Monitor crop health and field conditions with specialized aerial imagery.</p>
-                    <div class="image-gallery">
-                        <img src="https://page.genspark.site/v1/base64_upload/5b16133e900787385585289df4d1998a" alt="Agricultural field monitoring" loading="lazy">
-                    </div>
-                    <p class="text-sm text-gray-500 mt-2">Precision agriculture solutions</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Equipment Section -->
-    <section id="equipment" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Professional Equipment</h2>
-                <p class="text-xl text-gray-600">Top-grade tools for professional results</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
-                    <div class="flex items-center mb-6">
-                        <i class="fas fa-drone text-blue-600 text-4xl mr-4"></i>
-                        <h3 class="text-2xl font-bold">DJI Phantom 4 PRO V2.0</h3>
-                    </div>
-                    <div class="space-y-0">
-                        <div class="spec-item">
-                            <span class="font-medium">Camera Resolution</span>
-                            <span>20MP 1" CMOS Sensor</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Video Resolution</span>
-                            <span>4K @ 60fps / 1080p @ 120fps</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Max Flight Time</span>
-                            <span>30 Minutes</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Max Range</span>
-                            <span>7 km (4.3 miles)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Max Speed</span>
-                            <span>45 mph (72 km/h)</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Obstacle Avoidance</span>
-                            <span>5-Direction Sensing</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
-                    <div class="flex items-center mb-6">
-                        <i class="fas fa-toolbox text-blue-600 text-4xl mr-4"></i>
-                        <h3 class="text-2xl font-bold">Additional Equipment</h3>
-                    </div>
-                    <div class="space-y-0">
-                        <div class="spec-item">
-                            <span class="font-medium">Secondary Drone</span>
-                            <span>DJI Mini 3 Pro</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Storage & Transfer</span>
-                            <span>Multiple SD Cards & Portable SSD</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Extra Batteries</span>
-                            <span>6 Batteries with Field Charging Station</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Processing Software</span>
-                            <span>Pix4D, DroneDeploy, Adobe Suite</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Accessories</span>
-                            <span>ND Filters, Landing Pad, Transport Case</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="font-medium">Weather Station</span>
-                            <span>Portable Weather Monitor</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Professional Pricing Plans</h2>
-                <p class="text-xl text-gray-600">Choose the plan that fits your project needs</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Basic Plan -->
-                <div class="bg-white rounded-lg shadow-lg p-8 pricing-card">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Basic Plan</h3>
-                        <p class="text-gray-600 mb-4">Small construction projects & site monitoring</p>
-                        <div class="text-4xl font-bold text-blue-600 mb-2">Contact</div>
-                        <div class="text-gray-600">for pricing</div>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>1 flight per month</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Basic imaging (50 images, 10-min video)</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Basic 2D orthomosaic</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-times feature-x mr-3"></i>
-                            <span>Volumetric Analysis</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-times feature-x mr-3"></i>
-                            <span> Progress Tracking</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>48-hour data delivery</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="w-full btn-primary text-white py-3 rounded-lg font-semibold block text-center">Get Started</a>
-                </div>
-
-                <!-- Professional Plan -->
-                <div class="bg-white rounded-lg shadow-lg p-8 pricing-card pricing-popular">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Professional Plan</h3>
-                        <p class="text-gray-600 mb-4">Mid-sized projects needing regular updates & analytics</p>
-                        <div class="text-4xl font-bold text-blue-600 mb-2">Contact</div>
-                        <div class="text-gray-600">for pricing</div>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>2 flights per month</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Advanced imaging (100+ images, 20-min video)</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>High-resolution 2D & 3D mapping</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Volumetric Analysis</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-times feature-x mr-3"></i>
-                            <span> Progress Tracking</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>24-hour data delivery</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="w-full btn-primary text-white py-3 rounded-lg font-semibold block text-center">Get Started</a>
-                </div>
-
-                <!-- Enterprise Plan -->
-                <div class="bg-white rounded-lg shadow-lg p-8 pricing-card">
-                    <div class="text-center mb-8">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Enterprise Plan</h3>
-                        <p class="text-gray-600 mb-4">Large-scale & complex construction projects</p>
-                        <div class="text-4xl font-bold text-blue-600 mb-2">Contact</div>
-                        <div class="text-gray-600">for pricing</div>
-                    </div>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>4+ flights per month</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Custom imaging & analysis</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Advanced 2D & 3D mapping</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Volumetric Analysis</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span> Progress Tracking</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Custom compliance & safety reporting</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>On-demand flights</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Dedicated account manager</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check feature-check mr-3"></i>
-                            <span>Custom data delivery</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="w-full btn-primary text-white py-3 rounded-lg font-semibold block text-center">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Visual Portfolio</h2>
-                <p class="text-xl text-gray-600">Here's what we've seen from above.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Portfolio Item 1 -->
-                <div class="portfolio-item">
-                    <img src="https://page.genspark.site/v1/base64_upload/e804223227677f463ce8b09aac441eab" alt="Luxury Beachfront Property" class="w-full h-64 object-cover" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-white text-xl font-bold mb-2">Luxury Estate Showcase</h3>
-                        <p class="text-white">Premium beachfront property photography</p>
-                        <a href="#contact" class="text-blue-300 hover:text-white mt-2 inline-block">Request similar work</a>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 2 -->
-                <div class="portfolio-item">
-                    <img src="https://page.genspark.site/v1/base64_upload/440b9c7dc4fe03fda7d3a5de1f0b7ec6" alt="Construction Progress" class="w-full h-64 object-cover" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-white text-xl font-bold mb-2">Construction Progress</h3>
-                        <p class="text-white">Tracking development milestones</p>
-                        <a href="#contact" class="text-blue-300 hover:text-white mt-2 inline-block">Request similar work</a>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 3 -->
-                <div class="portfolio-item">
-                    <img src="https://page.genspark.site/v1/base64_upload/f7c5fbe2f44585ffff03ef1ac88a3578" alt="Golf Course Aerial" class="w-full h-64 object-cover" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-white text-xl font-bold mb-2">Golf Course Flyover</h3>
-                        <p class="text-white">Stunning course documentation</p>
-                        <a href="#contact" class="text-blue-300 hover:text-white mt-2 inline-block">Request similar work</a>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 4 -->
-                <div class="portfolio-item">
-                    <img src="https://page.genspark.site/v1/base64_upload/b3834f5efdf4ba20e743415f462aab30" alt="Festival Coverage" class="w-full h-64 object-cover" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-white text-xl font-bold mb-2">Festival Coverage</h3>
-                        <p class="text-white">Community event documentation</p>
-                        <a href="#contact" class="text-blue-300 hover:text-white mt-2 inline-block">Request similar work</a>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 5 -->
-                <div class="portfolio-item">
-                    <img src="https://page.genspark.site/v1/base64_upload/5b16133e900787385585289df4d1998a" alt="Agricultural Monitoring" class="w-full h-64 object-cover" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-white text-xl font-bold mb-2">Crop Assessment</h3>
-                        <p class="text-white">Agricultural monitoring services</p>
-                        <a href="#contact" class="text-blue-300 hover:text-white mt-2 inline-block">Request similar work</a>
-                    </div>
-                </div>
-
-                <!-- Portfolio Item 6 -->
-                <div class="portfolio-item">
-                    <img src="https://page.genspark.site/v1/base64_upload/d65b43b06b9e81b2aefac6eedf4d4f2f" alt="Cell Tower Inspection" class="w-full h-64 object-cover" loading="lazy">
-                    <div class="portfolio-overlay">
-                        <h3 class="text-white text-xl font-bold mb-2">Infrastructure Inspection</h3>
-                        <p class="text-white">Safe, detailed tower analysis</p>
-                        <a href="#contact" class="text-blue-300 hover:text-white mt-2 inline-block">Request similar work</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Client Testimonials</h2>
-                <p class="text-xl text-gray-600">What our clients say about our services</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <p class="italic text-gray-600 mb-6">"Anthony's drone service was exactly what our construction project needed. The aerial progress photos helped us identify issues before they became problems. Professional, on time, and high-quality work."</p>
-                    <div class="flex items-center">
-                        <div class="text-yellow-400 text-lg mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <p class="font-bold">Robert Johnson</p>
-                            <p class="text-sm text-gray-500">Construction Manager, JBH Builders</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <p class="italic text-gray-600 mb-6">"We used Uptown Drones for our luxury lakefront property listings. The aerial photos were stunning and helped us sell the property in just two weeks. Worth every penny!"</p>
-                    <div class="flex items-center">
-                        <div class="text-yellow-400 text-lg mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <div>
-                            <p class="font-bold">Sarah Miller</p>
-                            <p class="text-sm text-gray-500">Real Estate Agent, Orlando Luxury Homes</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <p class="italic text-gray-600 mb-6">"As a cell tower maintenance company, safety is our priority. Anthony's detailed tower inspections saved us time, money, and potential risks. His military background really shows in his attention to detail."</p>
-                    <div class="flex items-center">
-                        <div class="text-yellow-400 text-lg mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <div>
-                            <p class="font-bold">Michael Rivera</p>
-                            <p class="text-sm text-gray-500">Operations Director, TelComm Solutions</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Service Area Map Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Service Area</h2>
-                <p class="text-xl text-gray-600">Serving Orlando & Central Florida</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d448183.73932161914!2d-82.04952736428622!3d28.48095244344264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e7cd6c9ad12bdf%3A0x17d7953335daed20!2sOrlando%2C%20FL!5e0!3m2!1sen!2sus!4v1627476587488!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Areas We Cover</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-600 mr-3"></i>
-                            <span>Orlando & Greater Orlando Area</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-600 mr-3"></i>
-                            <span>Lake County (Eustis, Mount Dora, Tavares)</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-600 mr-3"></i>
-                            <span>Seminole County (Sanford, Lake Mary, Oviedo)</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-600 mr-3"></i>
-                            <span>Orange County (Winter Park, Apopka, Ocoee)</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-600 mr-3"></i>
-                            <span>Osceola County (Kissimmee, St. Cloud)</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check-circle text-green-600 mr-3"></i>
-                            <span>Volusia County (Daytona Beach, DeLand)</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-info-circle text-blue-600 mr-3"></i>
-                            <span>Other locations available upon request</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Blog/Resources Section -->
-    <section id="blog" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Drone Insights</h2>
-                <p class="text-xl text-gray-600">Industry knowledge and updates from the field</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Blog Post 1 -->
-                <div class="blog-card bg-white overflow-hidden">
-                    <img src="https://page.genspark.site/v1/base64_upload/d65b43b06b9e81b2aefac6eedf4d4f2f" alt="Cell tower inspection blog" class="w-full h-48 object-cover" loading="lazy">
-                    <div class="p-6">
-                        <p class="text-blue-600 font-semibold mb-2"></p>
-                        <h3 class="text-xl font-bold mb-2">How Drones Are Revolutionizing Cell Tower Inspections</h3>
-                        <p class="text-gray-600 mb-4">Discover how drone technology is making cell tower inspections safer, faster, and more cost-effective...</p>
-                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-800">Read More →</a>
-                    </div>
-                </div>
-                
-                <!-- Blog Post 2 -->
-                <div class="blog-card bg-white overflow-hidden">
-                    <img src="https://page.genspark.site/v1/base64_upload/440b9c7dc4fe03fda7d3a5de1f0b7ec6" alt="Construction blog" class="w-full h-48 object-cover" loading="lazy">
-                    <div class="p-6">
-                        <p class="text-blue-600 font-semibold mb-2"></p>
-                        <h3 class="text-xl font-bold mb-2">5 Ways Drones Are Transforming Construction Management</h3>
-                        <p class="text-gray-600 mb-4">Learn how construction managers are leveraging drone technology to improve project oversight and efficiency...</p>
-                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-800">Read More →</a>
-                    </div>
-                </div>
-                
-                <!-- Blog Post 3 -->
-                <div class="blog-card bg-white overflow-hidden">
-                    <img src="https://page.genspark.site/v1/base64_upload/e804223227677f463ce8b09aac441eab" alt="Real estate blog" class="w-full h-48 object-cover" loading="lazy">
-                    <div class="p-6">
-                        <p class="text-blue-600 font-semibold mb-2"></p>
-                        <h3 class="text-xl font-bold mb-2">Boosting Real Estate Sales with Professional Drone Photography</h3>
-                        <p class="text-gray-600 mb-4">How aerial imagery can help your property listings stand out in a competitive market...</p>
-                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-800">Read More →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mission Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Mission in the Field</h2>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="text-green-600 text-4xl mb-4">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Show up on time — every time</h3>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="text-green-600 text-4xl mb-4">
-                        <i class="fas fa-image"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Deliver clear, edit-ready drone imagery</h3>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="text-green-600 text-4xl mb-4">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Communicate like a pro (no guessing!)</h3>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="text-green-600 text-4xl mb-4">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Help builders visualize the job from above</h3>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="text-green-600 text-4xl mb-4">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Keep safety top-of-mind</h3>
-                </div>
-                
-                <div class="text-center p-6">
-                    <div class="text-green-600 text-4xl mb-4">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Build long-term relationships through quality</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Credentials Section -->
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Credentials</h2>
-                <p class="text-xl text-gray-600">Trust is earned in the air and on the ground</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">FAA Part 107 Certified</h3>
-                    <p class="text-gray-600">Updated: July 2025</p>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Fully Insured</h3>
-                    <p class="text-gray-600">$2M Professional Liability Coverage</p>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-lg p-8 text-center">
-                    <div class="text-red-600 text-4xl mb-4">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Veteran-Owned & Operated</h3>
-                    <p class="text-gray-600">Military precision and discipline</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Ready for Takeoff?</h2>
-                <p class="text-xl text-gray-600">Let's talk timelines, targets, and terrain. No fluff, just flight.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-                <div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <i class="fas fa-envelope text-blue-600 text-xl mr-4"></i>
-                            <a href="mailto:Uptowndronesllc@gmail.com" class="text-lg hover:text-blue-600 transition-colors">Uptowndronesllc@gmail.com</a>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-phone text-blue-600 text-xl mr-4"></i>
-                            <a href="tel:+14074480003" class="text-lg hover:text-blue-600 transition-colors">(407) 448-0003</a>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-blue-600 text-xl mr-4"></i>
-                            <span class="text-lg">Eustis, FL 32736</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-clock text-blue-600 text-xl mr-4"></i>
-                            <span class="text-lg">Open 24 Hours</span>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <h4 class="text-xl font-bold text-gray-900 mb-4">Follow Us</h4>
-                        <div class="flex space-x-4">
-                            <a href="https://www.facebook.com/uptowndrones" target="_blank" class="text-2xl text-blue-600 hover:text-blue-800"><i class="fab fa-facebook"></i></a>
-                            <a href="https://www.instagram.com/uptown_drones_llc" target="_blank" class="text-2xl text-blue-600 hover:text-blue-800"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/company/uptown-drones-llc" target="_blank" class="text-2xl text-blue-600 hover:text-blue-800"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://twitter.com/uptowndronesllc" target="_blank" class="text-2xl text-blue-600 hover:text-blue-800"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <form id="contact-form" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Name*</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Email*</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Service Needed*</label>
-                            <select id="service" name="service" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                                <option value="">Select a service</option>
-                                <option value="aerial-inspection">Aerial Inspection</option>
-                                <option value="construction-mapping">Construction Progress Mapping</option>
-                                <option value="cell-tower">Cell Tower Flyovers</option>
-                                <option value="real-estate">Real Estate Photography</option>
-                                <option value="event">Event Coverage</option>
-                                <option value="agriculture">Agricultural Monitoring</option>
-                                <option value="other">Other (Please specify)</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Details*</label>
-                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Project Location</label>
-                            <input type="text" id="location" name="location" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
-                        </div>
-                        <button type="submit" id="submit-form" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">
-                            Book Your Drone Flight
-                        </button>
-                        <div id="form-status" class="hidden text-center p-4 rounded-lg mt-4"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <div class="text-2xl font-bold mb-4 flex items-center">
-                        <i class="fas fa-drone mr-2"></i>
-                        Uptown Drones LLC
-                    </div>
-                    <p class="text-gray-400 mb-6">Professional drone services in Orlando & Central Florida</p>
-                    <div class="flex space-x-4">
-                        <a href="https://www.facebook.com/uptowndrones" target="_blank" class="text-gray-400 hover:text-white text-xl">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://www.instagram.com/uptown_drones_llc" target="_blank" class="text-gray-400 hover:text-white text-xl">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/company/uptown-drones-llc" target="_blank" class="text-gray-400 hover:text-white text-xl">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://twitter.com/uptowndronesllc" target="_blank" class="text-gray-400 hover:text-white text-xl">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                        <li><a href="#equipment" class="text-gray-400 hover:text-white transition-colors">Equipment</a></li>
-                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
-                        <li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
-                        <li><a href="#blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Contact</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope text-blue-600 mr-2"></i>
-                            <a href="mailto:Uptowndronesllc@gmail.com" class="text-gray-400 hover:text-white transition-colors">Uptowndronesllc@gmail.com</a>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone text-blue-600 mr-2"></i>
-                            <a href="tel:+14074480003" class="text-gray-400 hover:text-white transition-colors">(407) 448-0003</a>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt text-blue-600 mr-2"></i>
-                            <span class="text-gray-400">Eustis, FL 32736</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="pt-8 mt-8 border-t border-gray-800 text-gray-400 text-center">
-                <p>&copy; 2025 Uptown Drones LLC. All rights reserved. Veteran-Owned & Operated.</p>
-                <div class="flex justify-center space-x-4 mt-4 text-sm">
-                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-                    <a href="#" class="hover:text-white transition-colors">FAA Compliance</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const closeMenuButton = document.getElementById('close-menu');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.add('active');
-            });
-            
-            closeMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.remove('active');
-            });
-            
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileMenu.classList.remove('active');
-                });
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                navbar.classList.add('bg-white', 'shadow-lg');
-            } else {
-                navbar.classList.remove('bg-white', 'shadow-lg');
-            }
-        });
         
-        // Contact form functionality
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-            const location = document.getElementById('location').value;
-            
-            // Simple validation
-            if (!name || !email || !service || !message) {
-                showFormStatus('Please fill in all required fields', 'error');
-                return;
-            }
-            
-            // Simulate form submission
-            document.getElementById('submit-form').textContent = 'Sending...';
-            document.getElementById('submit-form').disabled = true;
-            
-            // Simulate API call with setTimeout
-            setTimeout(() => {
-                // Success message
-                showFormStatus('Thank you! We will contact you shortly about your drone service request.', 'success');
-                
-                // Reset form
-                document.getElementById('contact-form').reset();
-                document.getElementById('submit-form').textContent = 'Book Your Drone Flight';
-                document.getElementById('submit-form').disabled = false;
-                
-                // In a real application, you would send the data to your server here
-                // Example with fetch:
-                /*
-                fetch('https://your-api-endpoint.com/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        name,
-                        email,
-                        phone,
-                        service,
-                        message,
-                        location
-                    }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    showFormStatus('Thank you! We will contact you shortly.', 'success');
-                    document.getElementById('contact-form').reset();
-                })
-                .catch(error => {
-                    showFormStatus('There was a problem submitting your form. Please try again.', 'error');
-                })
-                .finally(() => {
-                    document.getElementById('submit-form').textContent = 'Book Your Drone Flight';
-                    document.getElementById('submit-form').disabled = false;
-                });
-                */
-            }, 1500);
-        });
-        
-        function showFormStatus(message, type) {
-            const statusDiv = document.getElementById('form-status');
-            statusDiv.textContent = message;
-            statusDiv.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
-            
-            if (type === 'success') {
-                statusDiv.classList.add('bg-green-100', 'text-green-800');
-            } else {
-                statusDiv.classList.add('bg-red-100', 'text-red-800');
-            }
-            
-            statusDiv.classList.remove('hidden');
-            
-            // Hide status message after 5 seconds
-            setTimeout(() => {
-                statusDiv.classList.add('hidden');
-            }, 5000);
-        }
-        
-        // Lazy loading for images
-        document.addEventListener("DOMContentLoaded", function() {
-            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-            
-            if ('IntersectionObserver' in window) {
-                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            let lazyImage = entry.target;
-                            lazyImage.src = lazyImage.src;
-                            lazyImageObserver.unobserve(lazyImage);
-                        }
-                    });
-                });
-                
-                lazyImages.forEach(function(lazyImage) {
-                    lazyImageObserver.observe(lazyImage);
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+
+<div class="card">
+  <div class="img-wrap">
+    <img id="heroSlide" class="img fade" alt="Aerial site progress overview" src="./Uptown Drones LLC – Heavy Civil Aerial Progress_files/photo-1581090582042-6fd150d57ef5" style="opacity: 1;">
+  </div>
+  <div class="pad" style="padding:14px 16px">
+    <div class="muted" style="font-size:14px">Repeatable vantage points for easy week-over-week comparison. Delivery in 24–48 hours.</div>
+  </div>
+</div>
+<script>
+  (function(){
+    const slides = [
+      "https://images.unsplash.com/photo-1597586124394-c6a9c3d7b97f?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1541976076758-347942db1970?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581090582042-6fd150d57ef5?q=80&w=1400&auto=format&fit=crop"
+    ];
+    function startSlideshow(){
+      const img = document.getElementById('heroSlide');
+      if(!img) return;
+      let i = 0;
+      setInterval(() => {
+        i = (i + 1) % slides.length;
+        // fade out
+        img.style.opacity = '0';
+        setTimeout(() => {
+          img.src = slides[i];
+          // fade in
+          img.style.opacity = '1';
+        }, 300);
+      }, 4000);
+    }
+    if (document.readyState === "loading") {
+      window.addEventListener("DOMContentLoaded", startSlideshow);
+    } else {
+      startSlideshow();
+    }
+  })();
+</script>
+</div>
+
+      
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="title">Why Contractors Call Us</h2>
+        <p class="muted">Your crews are busy. Investors want updates. Inspectors need proof.</p>
+        <div class="why-grid">
+          <div class="card pad"><strong>Track Weekly Changes</strong><br><span class="muted">Compare grading and staging without walking the whole site.</span></div>
+          <div class="card pad"><strong>Spot Issues Early</strong><br><span class="muted">See safety hazards, access conflicts, and sequencing problems sooner.</span></div>
+          <div class="card pad"><strong>Share Stakeholder Updates</strong><br><span class="muted">Polished visuals for owners, city officials, and the public.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="title">Services We Offer Now</h2>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <div class="card pad"><strong>Aerial Progress Documentation</strong><br><span class="muted">Weekly or bi‑weekly flights with repeatable vantage points and shareable deliverables.</span></div>
+          <div class="card pad"><strong>Material &amp; Equipment Monitoring (Visual Approximation)</strong><br><span class="muted">See relative changes in stockpiles, staging areas, and work zones.</span></div>
+          <div class="card pad"><strong>Pre‑Inspection Overviews</strong><br><span class="muted">Get the big picture before inspectors arrive to reduce surprises and delays.</span></div>
+          <div class="card pad"><strong>Stakeholder &amp; Marketing Packages</strong><br><span class="muted">Professionally edited footage and stills for owners, investors, and public updates.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPDATED PRICING SECTION START (replaces old tier-per-acre pricing) -->
+    <section id="pricing" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;gap:14px;align-items:end;flex-wrap:wrap">
+          <h2 class="title" style="margin:0">Simple, Project‑Friendly Pricing</h2>
+          <div class="muted" style="font-size:14px">Transparent. Minimum charge protects small sites. Cancel anytime.</div>
+        </div>
+
+        <div class="grid cols-3 pricing" style="margin-top:18px">
+          <!-- BASIC -->
+          <div class="card pad price-card">
+            <div class="muted" style="text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:12px">Basic</div>
+            <div class="price">$120 <span style="font-size:18px;font-weight:700">minimum per flight</span></div>
+            <div class="muted" style="font-size:14px">Covers up to 3 acres — $12.85 per additional acre</div>
+            <div class="muted" style="font-size:14px;margin-top:6px">1 flight / week</div>
+            <ul class="list">
+              <li>Consistent progress photos &amp; video</li>
+              <li>24–48 hr delivery</li>
+              <li>Shareable web gallery</li>
+            </ul>
+            <div class="persuade"><strong>Example:</strong> 8 acres → $120 + (5 × $12.85) = <strong>$184.25/flight</strong></div>
+            <div class="note">Minimum applies per flight. Ideal for steady weekly visibility.</div>
+            <div style="margin-top:14px">
+              <a href="#contact" class="btn" style="width:100%;text-align:center">Start with Basic</a>
+            </div>
+          </div>
+
+          <!-- PRO -->
+          <div class="card pad price-card" style="border:2px solid #111;box-shadow:0 6px 24px rgba(0,0,0,.05)">
+            <div class="pill">Most Popular</div>
+            <div class="muted" style="text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:12px">Pro</div>
+            <div class="price">Same core rate</div>
+            <div class="muted" style="font-size:14px">3 flights / week</div>
+            <div class="muted" style="font-size:14px;margin-top:6px">$120 minimum/flight (up to 3 acres) — $12.85 per additional acre</div>
+            <ul class="list">
+              <li>All Basic features</li>
+              <li>Repeatable vantage points for day‑over‑day change</li>
+              <li>Priority scheduling</li>
+              <li>Ideal for active earthwork phases</li>
+            </ul>
+            <div class="persuade">
+              <strong>Example:</strong> 8 acres → $184.25/flight × ~12 flights/mo = <strong>$2,211/mo</strong>
+            </div>
+            <div style="margin-top:14px">
+              <a href="#contact" class="btn primary" style="width:100%;text-align:center">Choose Pro</a>
+            </div>
+          </div>
+
+          <!-- ELITE -->
+          <div class="card pad price-card">
+            <div class="muted" style="text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:12px">Elite</div>
+            <div class="price">Same core rate</div>
+            <div class="muted" style="font-size:14px">5 flights / week</div>
+            <div class="muted" style="font-size:14px;margin-top:6px">$120 minimum/flight (up to 3 acres) — $12.85 per additional acre</div>
+            <ul class="list">
+              <li>All Pro features</li>
+              <li>Near‑daily change tracking</li>
+              <li>Dedicated time window</li>
+              <li>Best for complex, fast‑moving sites</li>
+            </ul>
+            <div class="persuade"><strong>Example:</strong> 8 acres → $184.25/flight × ~20 flights/mo = <strong>$3,685/mo</strong></div>
+            <div style="margin-top:14px">
+              <a href="#contact" class="btn" style="width:100%;text-align:center">Scale with Elite</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid cols-2" style="margin-top:22px">
+          <div class="card pad">
+            <h3 style="margin:0 0 6px 0">Why the minimum charge?</h3>
+            <p class="muted">Pre‑flight planning, travel, setup, and processing time are constant. A $120 minimum protects small‑site margins while keeping pricing fair and simple.</p>
+          </div>
+          <div class="card pad">
+            <h3 style="margin:0 0 6px 0">What saying “no” can cost</h3>
+            <p class="muted">Missed sequence changes, hazards, and delayed approvals add up. Multiple touchpoints per week find problems in days—not a week later when they’re expensive to fix.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- UPDATED PRICING SECTION END -->
+
+    <section id="how">
+      <div class="container">
+        <h2 class="title">How It Works</h2>
+        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+          <div class="card pad"><strong>1. Schedule Your Flight</strong><br><span class="muted">Tell us your site location, acreage, and preferred cadence.</span></div>
+          <div class="card pad"><strong>2. We Capture &amp; Process</strong><br><span class="muted">FAA‑certified pilot collects imagery; deliverables are processed and organized.</span></div>
+          <div class="card pad"><strong>3. Review in 24–48 Hours</strong><br><span class="muted">You receive a clean, shareable gallery for quick review and reporting.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+      <div class="container grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:center">
+        <div>
+          <h2 class="title">About Uptown Drones</h2>
+          <p>Founded by <strong>Anthony Anderson</strong>, a <strong>U.S. Army Veteran (Sergeant)</strong> and <strong>FAA Part 107</strong> certified pilot with 10+ years of piloting experience. Trained through <strong>DroneU</strong> in Mapping, Flight Mastery, and Cell Tower Inspection. Veteran discipline meets practical construction know‑how.</p>
+        </div>
+        <div class="card pad">
+          <strong>Credentials</strong>
+          <ul class="list">
+            <li>FAA Part 107 Certified (Issued May 2024)</li>
+            <li>DroneU Mapping Bootcamp (Dec 2024)</li>
+            <li>DroneU Flight Mastery (Dec 2024)</li>
+            <li>DroneU Cell Tower Inspection Bootcamp (Dec 2024)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="title">Ready to See the Difference?</h2>
+        <p>Book your first aerial progress report and see how much easier managing your project can be.</p>
+        <div class="card pad">
+          <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+            <div>
+              <div class="muted" style="font-size:14px">Email</div>
+              <div><a href="mailto:uptowndronesllc@gmail.com">uptowndronesllc@gmail.com</a></div>
+            </div>
+            <div>
+              <div class="muted" style="font-size:14px">Phone</div>
+              <div><a href="tel:+14074480003">(407) 448-0003</a></div>
+            </div>
+            <div>
+              <div class="muted" style="font-size:14px">Service Area</div>
+              <div>Central Florida • Eustis, FL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+      <div>
+        <div style="font-weight:800">Uptown Drones LLC</div>
+        <div class="muted" style="font-size:12px">Military Veteran Owned &amp; Operated • FAA Part 107 • Insured</div>
+      </div>
+      <a href="#contact" class="btn primary">Book My First Flight</a>
+    </div>
+  </footer>
+
+
+</body></html>
