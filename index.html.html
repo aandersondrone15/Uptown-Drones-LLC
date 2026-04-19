@@ -1,1 +1,714 @@
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  Bot,
+  Camera,
+  ChevronRight,
+  ClipboardList,
+  HardHat,
+  Mail,
+  MapPinned,
+  Phone,
+  Ruler,
+  ScanSearch,
+  ShieldCheck,
+  TimerReset,
+} from "lucide-react";
 
+type ChatRole = "bot" | "user";
+
+type ChatMessage = {
+  role: ChatRole;
+  text: string;
+};
+
+type DronePoint = {
+  id: number;
+  x: string;
+  y: string;
+  delay: number;
+};
+
+type FAQ = {
+  q: string;
+  a: string;
+};
+
+type Stat = {
+  label: string;
+  value: string;
+};
+
+const drones: DronePoint[] = [
+  { id: 1, x: "10%", y: "18%", delay: 0 },
+  { id: 2, x: "24%", y: "10%", delay: 0.4 },
+  { id: 3, x: "35%", y: "24%", delay: 0.2 },
+  { id: 4, x: "50%", y: "12%", delay: 0.6 },
+  { id: 5, x: "64%", y: "22%", delay: 0.1 },
+  { id: 6, x: "76%", y: "14%", delay: 0.5 },
+  { id: 7, x: "84%", y: "28%", delay: 0.3 },
+];
+
+const faqs: FAQ[] = [
+  {
+    q: "What exactly do you deliver?",
+    a: "Repeatable aerial viewpoints, progress photos, site overview imagery, milestone documentation, and organized file packages built for construction reporting.",
+  },
+  {
+    q: "How often can flights be scheduled?",
+    a: "Weekly, bi-weekly, milestone-based, or custom cadence depending on project size, active work zones, and reporting requirements.",
+  },
+  {
+    q: "Who is this service built for?",
+    a: "General contractors, civil contractors, developers, owners, superintendents, estimators, and stakeholders who need clear visual proof of what changed on site.",
+  },
+  {
+    q: "What makes this different from basic drone photos?",
+    a: "The focus is progression, not random beauty shots. Flights are planned around consistent viewpoints and clean comparison over time.",
+  },
+];
+
+const quickReplies = {
+  pricing:
+    "We offer milestone, weekly cadence, and custom site progression packages. Final pricing depends on frequency, acreage, travel, and deliverable scope.",
+  coverage:
+    "Uptown Drones is positioned for Central Florida construction and heavy civil work, with custom coverage based on project needs.",
+  deliverables:
+    "Typical deliverables include repeatable aerial frames, progress comparisons, walkthrough clips, and organized timestamped files.",
+  scheduling:
+    "Flights can be set weekly, bi-weekly, per milestone, or as-needed around project phases and reporting deadlines.",
+  fallback:
+    "This preview bot handles common business questions. For live deployment, it can be connected to a real FAQ engine or OpenAI-powered assistant.",
+} as const;
+
+export function getBotReply(value: string): string {
+  const text = value.toLowerCase();
+
+  if (text.includes("price") || text.includes("pricing") || text.includes("quote")) {
+    return quickReplies.pricing;
+  }
+
+  if (text.includes("cover") || text.includes("area") || text.includes("central florida")) {
+    return quickReplies.coverage;
+  }
+
+  if (
+    text.includes("deliver") ||
+    text.includes("file") ||
+    text.includes("photo") ||
+    text.includes("video")
+  ) {
+    return quickReplies.deliverables;
+  }
+
+  if (text.includes("schedule") || text.includes("weekly") || text.includes("milestone")) {
+    return quickReplies.scheduling;
+  }
+
+  return quickReplies.fallback;
+}
+
+function runReplyTests() {
+  const tests = [
+    {
+      input: "What is your pricing?",
+      expected: quickReplies.pricing,
+    },
+    {
+      input: "Do you cover Central Florida?",
+      expected: quickReplies.coverage,
+    },
+    {
+      input: "What deliverables do I get?",
+      expected: quickReplies.deliverables,
+    },
+    {
+      input: "Can I schedule weekly flights?",
+      expected: quickReplies.scheduling,
+    },
+    {
+      input: "Need a quote for photos and video",
+      expected: quickReplies.pricing,
+    },
+    {
+      input: "Hello there",
+      expected: quickReplies.fallback,
+    },
+  ];
+
+  tests.forEach(({ input, expected }) => {
+    console.assert(
+      getBotReply(input) === expected,
+      `getBotReply failed for input: ${input}`
+    );
+  });
+}
+
+if (typeof window !== "undefined") {
+  runReplyTests();
+}
+
+function DroneModel({ index }: { index: number }) {
+  const rotorDelay = (offset: number) => `${(index * 0.12 + offset).toFixed(2)}s`;
+
+  return (
+    <div className="relative h-16 w-16">
+      <div className="absolute left-1/2 top-1/2 h-1.5 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full bg-slate-200/90 shadow-[0_0_12px_rgba(255,255,255,0.25)]" />
+      <div className="absolute left-1/2 top-1/2 h-6 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-slate-300/90" />
+      <div className="absolute left-1/2 top-[58%] h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-sm border border-cyan-300/60 bg-slate-900/95 shadow-[0_0_16px_rgba(34,211,238,0.35)]" />
+      <div className="absolute left-[18%] top-[28%] h-2.5 w-2.5 rounded-full border border-white/25 bg-slate-500/90" />
+      <div className="absolute right-[18%] top-[28%] h-2.5 w-2.5 rounded-full border border-white/25 bg-slate-500/90" />
+      <div className="absolute left-[18%] bottom-[18%] h-2.5 w-2.5 rounded-full border border-white/25 bg-slate-500/90" />
+      <div className="absolute right-[18%] bottom-[18%] h-2.5 w-2.5 rounded-full border border-white/25 bg-slate-500/90" />
+
+      <div
+        className="absolute left-[8%] top-[18%] h-6 w-6 rounded-full border border-cyan-200/15"
+        style={{ animation: `spin 0.55s linear infinite`, animationDelay: rotorDelay(0) }}
+      >
+        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-cyan-100/55" />
+        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-cyan-100/55" />
+      </div>
+      <div
+        className="absolute right-[8%] top-[18%] h-6 w-6 rounded-full border border-cyan-200/15"
+        style={{ animation: `spin 0.52s linear infinite`, animationDelay: rotorDelay(0.08) }}
+      >
+        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-cyan-100/55" />
+        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-cyan-100/55" />
+      </div>
+      <div
+        className="absolute bottom-[8%] left-[8%] h-6 w-6 rounded-full border border-cyan-200/15"
+        style={{ animation: `spin 0.58s linear infinite`, animationDelay: rotorDelay(0.16) }}
+      >
+        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-cyan-100/55" />
+        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-cyan-100/55" />
+      </div>
+      <div
+        className="absolute bottom-[8%] right-[8%] h-6 w-6 rounded-full border border-cyan-200/15"
+        style={{ animation: `spin 0.5s linear infinite`, animationDelay: rotorDelay(0.24) }}
+      >
+        <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-cyan-100/55" />
+        <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-cyan-100/55" />
+      </div>
+    </div>
+  );
+}
+
+function DroneSwarm() {
+  return (
+    <div className="absolute inset-0 overflow-hidden rounded-3xl">
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
+
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,15,24,0.55),rgba(2,6,12,0.9))]" />
+
+      <motion.div
+        className="absolute inset-0"
+        animate={{ scale: [1, 1.018, 1], x: [0, -6, 0], y: [0, 5, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(34,211,238,0.08),transparent_38%)]" />
+
+        <div className="absolute left-[4%] top-[8%] h-[18%] w-[24%] rotate-[-10deg] rounded-[2rem] border border-emerald-300/10 bg-[linear-gradient(135deg,rgba(62,82,52,0.95),rgba(40,58,36,0.96))] shadow-[inset_0_0_20px_rgba(0,0,0,0.2)]" />
+        <div className="absolute right-[6%] top-[10%] h-[16%] w-[22%] rotate-[8deg] rounded-[2rem] border border-emerald-300/10 bg-[linear-gradient(135deg,rgba(55,72,44,0.95),rgba(38,50,31,0.96))]" />
+
+        <div className="absolute left-[18%] top-[18%] h-[12%] w-[54%] rotate-[-14deg] rounded-full bg-[linear-gradient(180deg,rgba(172,132,79,0.82),rgba(120,88,50,0.92))] shadow-[0_10px_30px_rgba(0,0,0,0.25)]" />
+        <div className="absolute left-[8%] top-[44%] h-[14%] w-[70%] rotate-[11deg] rounded-full bg-[linear-gradient(180deg,rgba(168,128,76,0.72),rgba(117,86,50,0.9))]" />
+        <div className="absolute right-[2%] top-[58%] h-[12%] w-[38%] rotate-[-18deg] rounded-full bg-[linear-gradient(180deg,rgba(168,128,76,0.68),rgba(113,82,48,0.9))]" />
+
+        <div className="absolute left-[26%] top-[20%] h-[54%] w-[38%] rotate-[2deg] rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(118,128,136,0.65),rgba(74,84,92,0.8))] shadow-[0_25px_60px_rgba(0,0,0,0.35)]" />
+        <div className="absolute left-[28%] top-[23%] h-[12%] w-[13%] rounded-xl border border-white/10 bg-slate-600/80" />
+        <div className="absolute left-[43%] top-[23%] h-[12%] w-[18%] rounded-xl border border-white/10 bg-slate-700/80" />
+        <div className="absolute left-[28%] top-[37%] h-[16%] w-[33%] rounded-xl border border-white/10 bg-slate-800/65" />
+        <div className="absolute left-[28%] top-[55%] h-[16%] w-[14%] rounded-xl border border-white/10 bg-slate-700/75" />
+        <div className="absolute left-[44%] top-[55%] h-[16%] w-[17%] rounded-xl border border-white/10 bg-slate-600/75" />
+
+        <div className="absolute left-[63%] top-[25%] h-[13%] w-[14%] rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(216,166,72,0.9),rgba(149,108,35,0.95))]" />
+        <div className="absolute left-[68%] top-[43%] h-[10%] w-[18%] rotate-[7deg] rounded-[1.3rem] border border-white/10 bg-[linear-gradient(180deg,rgba(217,160,67,0.88),rgba(147,104,32,0.95))]" />
+        <div className="absolute left-[62%] top-[58%] h-[12%] w-[20%] rotate-[-8deg] rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(193,143,56,0.88),rgba(132,93,30,0.95))]" />
+
+        <div className="absolute left-[12%] top-[26%] h-[10%] w-[10%] rounded-full bg-[radial-gradient(circle,rgba(131,98,60,0.95),rgba(87,62,37,0.92))]" />
+        <div className="absolute left-[14%] top-[56%] h-[14%] w-[16%] rounded-full bg-[radial-gradient(circle,rgba(123,91,55,0.95),rgba(78,56,33,0.92))]" />
+        <div className="absolute right-[12%] top-[28%] h-[12%] w-[12%] rounded-full bg-[radial-gradient(circle,rgba(130,95,58,0.95),rgba(83,59,35,0.92))]" />
+
+        <div className="absolute left-[8%] top-[32%] h-[1.5%] w-[82%] rotate-[11deg] bg-white/10" />
+        <div className="absolute left-[12%] top-[50%] h-[1.5%] w-[70%] rotate-[-18deg] bg-white/8" />
+        <div className="absolute left-[34%] top-[12%] h-[58%] w-[1px] bg-white/10" />
+        <div className="absolute left-[49%] top-[19%] h-[48%] w-[1px] bg-white/10" />
+
+        {[
+          { left: "31%", top: "28%", w: "9%" },
+          { left: "42%", top: "28%", w: "14%" },
+          { left: "31%", top: "43%", w: "24%" },
+          { left: "31%", top: "60%", w: "10%" },
+          { left: "44%", top: "60%", w: "11%" },
+          { left: "66%", top: "29%", w: "9%" },
+          { left: "71%", top: "47%", w: "12%" },
+        ].map((lane, index) => (
+          <div
+            key={`scan-lane-${index}`}
+            className="absolute h-[2px] bg-cyan-300/20 shadow-[0_0_10px_rgba(34,211,238,0.25)]"
+            style={{ left: lane.left, top: lane.top, width: lane.w }}
+          />
+        ))}
+
+        {[
+          { left: "30%", top: "22%", delay: 0 },
+          { left: "36%", top: "26%", delay: 0.2 },
+          { left: "46%", top: "24%", delay: 0.45 },
+          { left: "55%", top: "31%", delay: 0.7 },
+          { left: "38%", top: "44%", delay: 0.95 },
+          { left: "49%", top: "50%", delay: 1.2 },
+          { left: "67%", top: "28%", delay: 1.35 },
+          { left: "75%", top: "48%", delay: 1.55 },
+          { left: "20%", top: "60%", delay: 1.8 },
+          { left: "72%", top: "63%", delay: 2.0 },
+        ].map((point, index) => (
+          <motion.div
+            key={`data-point-${index}`}
+            className="absolute h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_14px_rgba(34,211,238,0.85)]"
+            style={{ left: point.left, top: point.top }}
+            animate={{ scale: [0.82, 1.28, 0.82], opacity: [0.25, 0.95, 0.25] }}
+            transition={{ duration: 1.8, repeat: Infinity, delay: point.delay, ease: "easeInOut" }}
+          >
+            <div className="absolute inset-[-7px] rounded-full border border-cyan-300/25" />
+          </motion.div>
+        ))}
+      </motion.div>
+
+      <motion.div
+        className="absolute inset-y-0 left-[-24%] w-[32%] bg-[linear-gradient(90deg,transparent,rgba(34,211,238,0.08),rgba(125,211,252,0.18),transparent)] blur-xl"
+        animate={{ x: ["0%", "390%"] }}
+        transition={{ duration: 5.3, repeat: Infinity, ease: "linear" }}
+      />
+
+      <motion.div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(3,10,18,0.08)_65%,rgba(2,6,12,0.26)_100%)]"
+        animate={{ opacity: [0.85, 1, 0.85] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {drones.map((drone, index) => (
+        <motion.div
+          key={drone.id}
+          className="absolute"
+          style={{ left: drone.x, top: drone.y }}
+          animate={{ y: [0, -12, 0], x: [0, 8, 0], rotate: [-1, 1, -1] }}
+          transition={{ duration: 4.2, repeat: Infinity, delay: drone.delay, ease: "easeInOut" }}
+        >
+          <div className="relative">
+            <motion.div
+              className="absolute left-1/2 top-10 h-32 w-px -translate-x-1/2 bg-gradient-to-b from-cyan-300/90 to-transparent"
+              animate={{ opacity: [0.45, 0.9, 0.45], scaleY: [0.9, 1.08, 0.9] }}
+              transition={{ duration: 1.8, repeat: Infinity, delay: drone.delay, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute left-1/2 top-10 h-24 w-24 -translate-x-1/2 rounded-full border border-cyan-300/30"
+              animate={{ scale: [0.86, 1.08, 0.86], opacity: [0.2, 0.55, 0.2] }}
+              transition={{ duration: 2.2, repeat: Infinity, delay: drone.delay, ease: "easeInOut" }}
+            />
+            <motion.div
+              className="absolute left-1/2 top-10 h-36 w-20 -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.30),rgba(34,211,238,0.06),transparent_70%)] blur-md"
+              animate={{ opacity: [0.16, 0.44, 0.16] }}
+              transition={{ duration: 1.5, repeat: Infinity, delay: drone.delay, ease: "easeInOut" }}
+            />
+            <div className="drop-shadow-[0_0_24px_rgba(34,211,238,0.2)]">
+              <DroneModel index={index} />
+            </div>
+          </div>
+        </motion.div>
+      ))}
+
+      <div className="absolute right-4 top-4 max-w-xs rounded-2xl border border-cyan-300/20 bg-slate-950/70 p-4 backdrop-blur">
+        <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-cyan-300">
+          <ScanSearch className="h-4 w-4" /> Live Capture Logic
+        </div>
+        <div className="space-y-2 text-sm text-slate-200">
+          <div className="flex items-center justify-between">
+            <span>Repeatable angles</span>
+            <span className="text-cyan-300">Locked</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span>Progress intervals</span>
+            <span className="text-cyan-300">Weekly</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span>Data points collected</span>
+            <span className="text-cyan-300">12,480</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MiniChatbot() {
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      role: "bot",
+      text: "Ask about pricing, deliverables, coverage, or scheduling.",
+    },
+  ]);
+  const [input, setInput] = useState("");
+
+  const reply = (value: string) => {
+    const cleanValue = value.trim();
+    if (!cleanValue) return;
+
+    const answer = getBotReply(cleanValue);
+    setMessages((current) => [
+      ...current,
+      { role: "user", text: cleanValue },
+      { role: "bot", text: answer },
+    ]);
+  };
+
+  return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button size="lg" className="fixed bottom-5 right-5 z-50 rounded-full px-5 py-6 text-base shadow-2xl">
+          <Bot className="mr-2 h-5 w-5" /> Ask Uptown Drones
+        </Button>
+      </SheetTrigger>
+      <SheetContent className="w-full border-l border-slate-800 bg-slate-950 text-slate-100 sm:max-w-md">
+        <SheetHeader>
+          <SheetTitle className="flex items-center gap-2 text-slate-50">
+            <Bot className="h-5 w-5" /> Business Q&amp;A Bot
+          </SheetTitle>
+        </SheetHeader>
+        <div className="mt-6 flex h-[85vh] flex-col">
+          <div className="flex-1 space-y-3 overflow-auto rounded-2xl border border-slate-800 bg-slate-900/60 p-3">
+            {messages.map((message, index) => (
+              <div
+                key={`${message.role}-${index}`}
+                className={`max-w-[88%] rounded-2xl p-3 text-sm ${
+                  message.role === "bot"
+                    ? "bg-slate-800 text-slate-100"
+                    : "ml-auto bg-cyan-500/20 text-cyan-50"
+                }`}
+              >
+                {message.text}
+              </div>
+            ))}
+          </div>
+          <div className="mt-4 space-y-3">
+            <div className="grid grid-cols-2 gap-2">
+              {["Pricing", "Deliverables", "Coverage", "Scheduling"].map((label) => (
+                <Button
+                  key={label}
+                  variant="outline"
+                  className="justify-start border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800"
+                  onClick={() => reply(label)}
+                >
+                  {label}
+                </Button>
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    reply(input);
+                    setInput("");
+                  }
+                }}
+                placeholder="Type a business question..."
+                className="border-slate-700 bg-slate-900"
+              />
+              <Button
+                onClick={() => {
+                  reply(input);
+                  setInput("");
+                }}
+              >
+                Send
+              </Button>
+            </div>
+          </div>
+        </div>
+      </SheetContent>
+    </Sheet>
+  );
+}
+
+export default function UptownDronesPreview() {
+  const stats = useMemo<Stat[]>(
+    () => [
+      { label: "Repeatable flight paths", value: "Locked" },
+      { label: "Progress story", value: "Week-over-week" },
+      { label: "Reporting focus", value: "Construction-grade" },
+      { label: "Core hook", value: "Site progression" },
+    ],
+    []
+  );
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-50">
+      <MiniChatbot />
+
+      <header className="sticky top-0 z-40 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-6">
+          <div>
+            <div className="text-xs uppercase tracking-[0.35em] text-cyan-300">Uptown Drones LLC</div>
+            <div className="text-sm text-slate-300">Veteran-owned aerial documentation</div>
+          </div>
+          <nav className="hidden items-center gap-6 text-sm text-slate-300 md:flex">
+            <a href="#services" className="hover:text-white">
+              Services
+            </a>
+            <a href="#progression" className="hover:text-white">
+              Progression
+            </a>
+            <a href="#why" className="hover:text-white">
+              Why Uptown
+            </a>
+            <a href="#contact" className="hover:text-white">
+              Contact
+            </a>
+          </nav>
+          <Button className="rounded-full">Book a Flight</Button>
+        </div>
+      </header>
+
+      <main>
+        <section className="relative overflow-hidden">
+          <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 md:px-6 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+            <div>
+              <Badge className="mb-4 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-1 text-cyan-200 hover:bg-cyan-300/10">
+                FAA Part 107 • Insured • Central Florida Construction Focus
+              </Badge>
+              <h1 className="max-w-3xl text-4xl font-semibold leading-tight md:text-6xl">
+                Turn drone flights into a
+                <span className="text-cyan-300"> site progression engine</span>.
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+                This concept pushes one message hard: a swarm of DJI-style aircraft repeatedly
+                scans the jobsite, collects visual data points, and turns changing conditions
+                into proof, timeline, and accountability.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button size="lg" className="rounded-full px-6 text-base">
+                  See Progress Packages <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full border-white/20 bg-white/5 px-6 text-base text-white hover:bg-white/10"
+                >
+                  Preview Reporting Flow
+                </Button>
+              </div>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                {stats.map((stat) => (
+                  <Card key={stat.label} className="rounded-2xl border-white/10 bg-white/5 text-white shadow-xl">
+                    <CardContent className="p-4">
+                      <div className="text-xl font-semibold text-cyan-300">{stat.value}</div>
+                      <div className="mt-1 text-sm text-slate-300">{stat.label}</div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative min-h-[430px] rounded-3xl border border-white/10 bg-slate-900 shadow-2xl shadow-cyan-500/10">
+              <DroneSwarm />
+            </div>
+          </div>
+        </section>
+
+        <section id="services" className="mx-auto max-w-7xl px-4 py-10 md:px-6 md:py-16">
+          <div className="mb-8 max-w-3xl">
+            <div className="text-sm uppercase tracking-[0.3em] text-cyan-300">Built for active jobsites</div>
+            <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+              Not drone photography. Construction intelligence.
+            </h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {[
+              {
+                icon: Camera,
+                title: "Repeatable Views",
+                text: "Lock the same key angles so progress can be tracked cleanly over time.",
+              },
+              {
+                icon: ClipboardList,
+                title: "Reporting Packages",
+                text: "Organized files built for supers, PMs, owners, and stakeholder updates.",
+              },
+              {
+                icon: TimerReset,
+                title: "Weekly Cadence",
+                text: "Maintain visual accountability without dragging field teams into manual site walks.",
+              },
+              {
+                icon: Ruler,
+                title: "Milestone Proof",
+                text: "Capture major phase shifts, access changes, and installation progress when it matters.",
+              },
+            ].map((item) => (
+              <Card key={item.title} className="rounded-3xl border-white/10 bg-white/5 text-white">
+                <CardContent className="p-6">
+                  <item.icon className="h-10 w-10 text-cyan-300" />
+                  <h3 className="mt-5 text-xl font-semibold">{item.title}</h3>
+                  <p className="mt-3 text-slate-300">{item.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section id="progression" className="border-y border-white/10 bg-white/[0.03]">
+          <div className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div>
+                <div className="text-sm uppercase tracking-[0.3em] text-cyan-300">Site progression</div>
+                <h2 className="mt-3 text-3xl font-semibold md:text-4xl">
+                  How the new site should sell the service
+                </h2>
+                <p className="mt-4 text-lg leading-8 text-slate-300">
+                  The current site explains the offer. This version sells the process visually:
+                  swarm capture, data points, evolving site conditions, and proof that a project
+                  is actually moving.
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                {[
+                  ["01", "Mission planning", "Define capture zones, repeatable paths, and reporting priorities."],
+                  ["02", "Swarm-style capture", "Show multiple aerial passes covering active work zones like a coordinated system."],
+                  ["03", "Progress proof", "Turn raw visuals into timeline evidence stakeholders can read fast."],
+                ].map(([num, title, text]) => (
+                  <Card key={title} className="rounded-3xl border-white/10 bg-slate-900 text-white">
+                    <CardContent className="p-6">
+                      <div className="text-sm tracking-[0.25em] text-cyan-300">{num}</div>
+                      <h3 className="mt-4 text-xl font-semibold">{title}</h3>
+                      <p className="mt-3 text-slate-300">{text}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="why" className="mx-auto max-w-7xl px-4 py-12 md:px-6 md:py-16">
+          <div className="grid gap-6 lg:grid-cols-[1fr_0.85fr]">
+            <Card className="rounded-3xl border-white/10 bg-gradient-to-br from-cyan-400/10 to-slate-900 text-white">
+              <CardContent className="p-8">
+                <div className="text-sm uppercase tracking-[0.3em] text-cyan-300">Why this direction works</div>
+                <h2 className="mt-3 text-3xl font-semibold">
+                  It gives contractors a stronger mental picture.
+                </h2>
+                <div className="mt-6 grid gap-5 md:grid-cols-2">
+                  {[
+                    [HardHat, "More visual authority", "The page looks closer to construction tech than a standard local service site."],
+                    [ShieldCheck, "Better positioning", "Veteran-owned, repeatable, disciplined capture gets reinforced by the design language."],
+                    [MapPinned, "Sharper niche targeting", "Everything points toward active site progression instead of generic aerial media."],
+                    [Mail, "Stronger conversion path", "The chat bot and contact sections reduce friction for project managers with quick questions."],
+                  ].map(([Icon, title, text]) => (
+                    <div key={title} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                      <Icon className="h-8 w-8 text-cyan-300" />
+                      <h3 className="mt-4 text-lg font-semibold">{title}</h3>
+                      <p className="mt-2 text-slate-300">{text}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="rounded-3xl border-white/10 bg-white/5 text-white">
+              <CardContent className="p-8">
+                <div className="text-sm uppercase tracking-[0.3em] text-cyan-300">Common questions</div>
+                <Accordion type="single" collapsible className="mt-4 w-full">
+                  {faqs.map((faq, index) => (
+                    <AccordionItem key={faq.q} value={`item-${index}`} className="border-white/10">
+                      <AccordionTrigger className="text-left">{faq.q}</AccordionTrigger>
+                      <AccordionContent className="text-slate-300">{faq.a}</AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <section id="contact" className="mx-auto max-w-7xl px-4 pb-20 md:px-6">
+          <Card className="rounded-[2rem] border-white/10 bg-slate-900 text-white shadow-2xl shadow-cyan-500/10">
+            <CardContent className="grid gap-8 p-8 lg:grid-cols-[0.9fr_1.1fr] lg:p-10">
+              <div>
+                <div className="text-sm uppercase tracking-[0.3em] text-cyan-300">Book your first flight</div>
+                <h2 className="mt-3 text-3xl font-semibold">Get construction-ready aerial documentation.</h2>
+                <p className="mt-4 text-slate-300">
+                  Send the project location, preferred cadence, and the type of progress you need
+                  documented.
+                </p>
+                <div className="mt-6 space-y-4 text-slate-200">
+                  <div className="flex items-center gap-3">
+                    <Mail className="h-5 w-5 text-cyan-300" /> Uptowndronesllc@gmail.com
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Phone className="h-5 w-5 text-cyan-300" /> 407-448-0003
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <MapPinned className="h-5 w-5 text-cyan-300" /> Central Florida
+                  </div>
+                </div>
+              </div>
+              <div className="grid gap-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Input placeholder="Name" className="h-12 border-white/10 bg-white/5" />
+                  <Input placeholder="Company" className="h-12 border-white/10 bg-white/5" />
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Input placeholder="Email" className="h-12 border-white/10 bg-white/5" />
+                  <Input placeholder="Phone" className="h-12 border-white/10 bg-white/5" />
+                </div>
+                <Input placeholder="Project Location" className="h-12 border-white/10 bg-white/5" />
+                <Textarea
+                  placeholder="Tell us what needs to be captured: grading, utilities, paving, vertical progress, access, staging, milestones..."
+                  className="min-h-[150px] border-white/10 bg-white/5"
+                />
+                <div className="flex flex-wrap gap-3">
+                  <Button size="lg" className="rounded-full px-6">
+                    Request Flight Schedule
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full border-white/20 bg-white/5 text-white hover:bg-white/10"
+                  >
+                    Open FAQ Bot
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+      </main>
+    </div>
+  );
+}
