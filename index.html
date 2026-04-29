@@ -1,515 +1,509 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Uptown Drones LLC - Military veteran-owned aerial progress reporting for heavy civil construction in Central Florida. FAA Part 107 certified & insured.">
-    <title>Uptown Drones LLC | Aerial Construction Progress Reports | Central Florida</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Uptown Drones LLC | Construction Progress Drone Reports in Central Florida</title>
+  <meta name="description" content="Veteran-owned FAA Part 107 drone imaging for construction progress reports, milestone documentation, site walkthrough clips, and SB-4D support across Eustis, Orlando, Lake County, Orange County, and Central Florida.">
+  <meta name="keywords" content="construction drone progress reports Central Florida, Eustis drone services, Orlando drone construction documentation, Lake County drone pilot, SB-4D drone imaging, FAA Part 107 drone pilot, Uptown Drones LLC">
+  <meta name="theme-color" content="#071018">
+  <meta property="og:title" content="Uptown Drones LLC | Construction Progress Drone Reports">
+  <meta property="og:description" content="Repeatable aerial progress documentation for contractors, owners, engineers, property managers, HOAs, and condo associations across Central Florida.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://aandersondrone15.github.io/Uptown-Drones-LLC/">
+  <style>
+
+:root{
+  --bg:#071018;
+  --bg-2:#0b1722;
+  --panel:#102234;
+  --panel-2:#132b40;
+  --text:#eef7ff;
+  --muted:#b8ccda;
+  --line:rgba(255,255,255,.16);
+  --brand:#58d6ff;
+  --brand-2:#78ffb2;
+  --warn:#ffd166;
+  --danger:#ff7a7a;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+  --radius:22px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(88,214,255,.22), transparent 34rem),
+    radial-gradient(circle at 82% 18%, rgba(120,255,178,.14), transparent 30rem),
+    linear-gradient(180deg, var(--bg), #08141e 50%, #050a10);
+  line-height:1.6;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+.skip-link{
+  position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;
+}
+.skip-link:focus{
+  left:1rem;top:1rem;width:auto;height:auto;background:#fff;color:#000;padding:.75rem 1rem;border-radius:.75rem;z-index:9999;
+}
+.container{width:min(var(--max), calc(100% - 2rem));margin-inline:auto}
+.site-header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(18px);
+  background:rgba(7,16,24,.84);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;gap:1.2rem;padding:1rem 0;
+}
+.logo{
+  display:flex;align-items:center;gap:.75rem;text-decoration:none;font-weight:900;letter-spacing:.02em;
+}
+.logo-mark{
+  display:grid;place-items:center;width:46px;height:46px;border-radius:16px;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#071018;font-weight:1000;box-shadow:0 10px 35px rgba(88,214,255,.25);
+}
+.logo small{display:block;color:var(--muted);font-weight:700;font-size:.75rem}
+.nav-links{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+.nav-links a{
+  text-decoration:none;color:var(--muted);font-weight:800;font-size:.94rem;
+  padding:.55rem .7rem;border-radius:999px;
+}
+.nav-links a:hover,.nav-links a:focus-visible{background:rgba(255,255,255,.08);color:var(--text);outline:0}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  text-decoration:none;border:1px solid var(--line);border-radius:999px;
+  padding:.88rem 1.1rem;font-weight:900;min-height:46px;
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover,.btn:focus-visible{transform:translateY(-1px);outline:3px solid rgba(88,214,255,.32);outline-offset:3px}
+.btn-primary{
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#051017;border-color:transparent;
+}
+.btn-secondary{background:rgba(255,255,255,.06);color:var(--text)}
+.btn-ghost{background:transparent;color:var(--text)}
+.hero{
+  position:relative;overflow:hidden;padding:5rem 0 3rem;border-bottom:1px solid var(--line);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:center}
+.eyebrow{
+  display:inline-flex;gap:.5rem;align-items:center;border:1px solid var(--line);
+  background:rgba(255,255,255,.06);border-radius:999px;padding:.45rem .75rem;color:var(--brand-2);
+  font-weight:900;font-size:.88rem;
+}
+h1,h2,h3{line-height:1.08;margin:0 0 1rem}
+h1{font-size:clamp(2.45rem,7vw,5.35rem);letter-spacing:-.07em}
+h2{font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.045em}
+h3{font-size:1.25rem}
+.lead{font-size:clamp(1.05rem,2vw,1.32rem);color:var(--muted);max-width:66ch}
+.hero-actions{display:flex;gap:.9rem;flex-wrap:wrap;margin:1.55rem 0}
+.trust-row{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;margin-top:1.5rem}
+.trust-card{
+  border:1px solid var(--line);background:rgba(255,255,255,.055);border-radius:18px;padding:.9rem;
+  min-height:92px;
+}
+.trust-card strong{display:block;color:var(--text);font-size:.94rem}
+.trust-card span{display:block;color:var(--muted);font-size:.82rem;margin-top:.25rem}
+.visual-card{
+  position:relative;min-height:520px;border:1px solid var(--line);border-radius:34px;overflow:hidden;
+  background:
+    linear-gradient(145deg, rgba(13,32,48,.75), rgba(8,19,28,.94)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 1px, transparent 1px 54px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 54px);
+  box-shadow:var(--shadow);
+}
+.site-map{
+  position:absolute;inset:9%;border-radius:24px;
+  background:
+    linear-gradient(35deg, transparent 0 18%, rgba(255,255,255,.06) 18% 21%, transparent 21% 47%, rgba(255,255,255,.07) 47% 50%, transparent 50%),
+    radial-gradient(circle at 65% 45%, rgba(120,255,178,.2), transparent 10rem),
+    #0f2639;
+  border:1px solid rgba(255,255,255,.14);
+  transform:perspective(900px) rotateX(58deg) rotateZ(-27deg) translateY(2rem);
+}
+.scan-line{
+  position:absolute;left:4%;right:4%;height:3px;background:linear-gradient(90deg,transparent,var(--brand),var(--brand-2),transparent);
+  box-shadow:0 0 30px var(--brand);
+  animation:scan 4.8s linear infinite;
+}
+.drone{
+  position:absolute;width:58px;height:34px;border-radius:16px;background:rgba(238,247,255,.95);
+  color:#071018;display:grid;place-items:center;font-weight:1000;font-size:.68rem;
+  box-shadow:0 0 22px rgba(88,214,255,.45);
+}
+.drone::before,.drone::after{
+  content:"";position:absolute;width:21px;height:21px;border:3px solid rgba(88,214,255,.78);
+  border-radius:50%;top:6px;
+}
+.drone::before{left:-17px}.drone::after{right:-17px}
+.d1{left:15%;top:22%;animation:float1 5.5s ease-in-out infinite}
+.d2{right:18%;top:34%;animation:float2 6s ease-in-out infinite}
+.d3{left:42%;bottom:22%;animation:float3 5.2s ease-in-out infinite}
+.data-point{
+  position:absolute;width:10px;height:10px;border-radius:50%;background:var(--brand-2);
+  box-shadow:0 0 22px var(--brand-2);
+  animation:pulse 1.7s ease-in-out infinite;
+}
+.p1{left:32%;top:45%}.p2{left:56%;top:39%;animation-delay:.3s}.p3{left:62%;top:62%;animation-delay:.6s}.p4{left:40%;top:68%;animation-delay:.9s}
+.visual-caption{
+  position:absolute;left:1rem;right:1rem;bottom:1rem;border:1px solid var(--line);border-radius:22px;padding:1rem;
+  background:rgba(7,16,24,.8);backdrop-filter:blur(14px);
+}
+.visual-caption strong{display:block}.visual-caption span{display:block;color:var(--muted);font-size:.92rem}
+@keyframes scan{0%{top:10%;opacity:.2}15%{opacity:1}100%{top:86%;opacity:.2}}
+@keyframes float1{50%{transform:translate(18px,-14px)}}@keyframes float2{50%{transform:translate(-16px,12px)}}@keyframes float3{50%{transform:translate(12px,16px)}}
+@keyframes pulse{50%{transform:scale(1.6);opacity:.55}}
+.section{padding:4.6rem 0}
+.section-alt{background:rgba(255,255,255,.035);border-block:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;gap:1.5rem;align-items:end;margin-bottom:2rem}
+.section-head p{color:var(--muted);max-width:60ch;margin:0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius);padding:1.35rem;background:rgba(255,255,255,.055);
+  box-shadow:0 12px 40px rgba(0,0,0,.18);
+}
+.card p,.card li{color:var(--muted)}
+.card-icon{
+  width:48px;height:48px;border-radius:16px;display:grid;place-items:center;
+  background:rgba(88,214,255,.13);border:1px solid rgba(88,214,255,.35);font-size:1.35rem;margin-bottom:1rem;
+}
+.check-list{padding-left:1.15rem;margin:1rem 0 0}
+.check-list li{margin:.55rem 0}
+.process{counter-reset:step}
+.process .card{position:relative;padding-top:4rem}
+.process .card::before{
+  counter-increment:step;content:counter(step);
+  position:absolute;top:1rem;left:1rem;width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#071018;
+  display:grid;place-items:center;font-weight:1000;
+}
+.price{
+  display:flex;align-items:baseline;gap:.4rem;margin:1rem 0;color:var(--text);
+}
+.price strong{font-size:2.2rem;letter-spacing:-.05em}
+.price span{color:var(--muted)}
+.ribbon{display:inline-flex;background:rgba(120,255,178,.13);border:1px solid rgba(120,255,178,.35);color:var(--brand-2);border-radius:999px;padding:.3rem .7rem;font-weight:900;font-size:.78rem;margin-bottom:.8rem}
+.notice{
+  border:1px solid rgba(255,209,102,.35);background:rgba(255,209,102,.09);border-radius:var(--radius);padding:1.25rem;color:#ffe6a3;
+}
+.case-study{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:1rem;align-items:stretch;
+}
+.case-metric{
+  border:1px solid var(--line);border-radius:18px;padding:1rem;background:rgba(0,0,0,.2);
+}
+.case-metric strong{display:block;font-size:1.5rem;color:var(--brand-2)}
+.contact-panel{
+  display:grid;grid-template-columns:1fr .9fr;gap:1rem;align-items:center;
+  border:1px solid var(--line);background:
+  radial-gradient(circle at top right, rgba(88,214,255,.18), transparent 30rem),
+  rgba(255,255,255,.055);
+  border-radius:34px;padding:2rem;
+}
+.contact-list{display:grid;gap:.8rem}
+.contact-item{
+  border:1px solid var(--line);border-radius:18px;padding:1rem;background:rgba(0,0,0,.18);
+}
+.contact-item span{display:block;color:var(--muted);font-size:.85rem}
+.footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--muted)}
+.footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:1rem}
+.footer a{color:var(--muted);text-decoration:none}.footer a:hover{color:var(--text)}
+.mobile-menu-button{display:none}
+kbd{border:1px solid var(--line);border-radius:.4rem;padding:.15rem .35rem;background:rgba(255,255,255,.08)}
+@media (max-width:900px){
+  .hero-grid,.grid-3,.grid-2,.case-study,.contact-panel,.footer-grid{grid-template-columns:1fr}
+  .trust-row{grid-template-columns:repeat(2,1fr)}
+  .visual-card{min-height:420px}
+  .section-head{display:block}
+  .nav{align-items:flex-start}
+  .mobile-menu-button{display:inline-flex}
+  .nav-links{
+    display:none;width:100%;flex-direction:column;align-items:stretch;
+    padding-top:1rem;
+  }
+  .nav-links.open{display:flex}
+  .nav{flex-wrap:wrap}
+}
+@media (max-width:560px){
+  .hero{padding-top:3.2rem}
+  .trust-row{grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
+  .contact-panel{padding:1.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+}
+
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar" class="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <div class="logo-badge">UD</div>
-                <div class="logo-text">
-                    <span class="logo-main">Uptown Drones LLC</span>
-                    <span class="logo-sub">Veteran Owned</span>
-                </div>
-            </div>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#contact" class="btn btn-primary btn-small">Book My First Flight</a></li>
-            </ul>
-        </div>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container nav" aria-label="Primary navigation">
+    <a class="logo" href="index.html" aria-label="Uptown Drones LLC home">
+      <span class="logo-mark" aria-hidden="true">UD</span>
+      <span>Uptown Drones LLC <small>Veteran Owned & Operated</small></span>
+    </a>
+    <button class="btn btn-ghost mobile-menu-button" type="button" data-menu-button aria-controls="primary-links" aria-expanded="false">Menu</button>
+    <nav class="nav-links" id="primary-links" data-nav-links>
+      <a href="#services">Services</a>
+      <a href="#deliverables">Deliverables</a>
+      <a href="#pricing">Pricing</a>
+      <a href="sb4d-drone-imaging.html">SB-4D Support</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="mailto:Uptowndronesllc@gmail.com?subject=Drone%20Progress%20Report%20Request&body=Project%20Location:%0D%0AProject%20Type:%0D%0APreferred%20Cadence:%0D%0ATimeline:%0D%0A">Email Project Details</a>
     </nav>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-background">
-            <img src="https://www.genspark.ai/api/files/s/HEmtr6q8" alt="Aerial construction site documentation" class="hero-image">
-            <div class="hero-overlay"></div>
+<main id="main">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Central Florida Construction Documentation</span>
+        <h1>Aerial progress reports that keep your project moving forward.</h1>
+        <p class="lead">Clear, repeatable drone imaging for contractors, owners, engineers, property managers, HOAs, and condo associations across Eustis, Mount Dora, Leesburg, Tavares, Apopka, Orlando, Sanford, The Villages, Lake County, Orange County, and Central Florida.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:Uptowndronesllc@gmail.com?subject=Drone%20Progress%20Report%20Request&body=Project%20Location:%0D%0AProject%20Type:%0D%0APreferred%20Cadence:%0D%0ATimeline:%0D%0A">Email Project Details</a>
+          <a class="btn btn-secondary" href="tel:4074480003">Call Tony: 407-448-0003</a>
+          <a class="btn btn-ghost" href="sb4d-drone-imaging.html">View SB-4D Support</a>
         </div>
-        <div class="container hero-content">
-            <h1 class="hero-title animate-fade-in">Aerial Progress Reports That Keep Your Project Moving Forward</h1>
-            <p class="hero-subtitle animate-fade-in">Clear, consistent visuals for construction and heavy civil across Central Florida. FAA Part 107 certified & insured. Reporting built around repeatable viewpoints and timestamped deliverables.</p>
-            
-            <div class="credibility-badges animate-fade-in">
-                <div class="badge">
-                    <i class="fas fa-medal"></i>
-                    <span>Military Veteran Owned & Operated</span>
-                </div>
-                <div class="badge">
-                    <i class="fas fa-plane"></i>
-                    <span>FAA Part 107 Certified</span>
-                </div>
-                <div class="badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Fully Insured</span>
-                </div>
-                <div class="badge">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Central Florida Heavy Civil</span>
-                </div>
-            </div>
-
-            <div class="hero-cta animate-fade-in">
-                <a href="#pricing" class="btn btn-primary btn-large">View Project-Friendly Pricing</a>
-                <a href="#how-it-works" class="btn btn-secondary btn-large">See How It Works <i class="fas fa-arrow-right"></i></a>
-            </div>
+        <div class="trust-row" aria-label="Uptown Drones trust signals">
+          <div class="trust-card"><strong>FAA Part 107</strong><span>Certified remote pilot</span></div>
+          <div class="trust-card"><strong>Fully Insured</strong><span>COI available on request</span></div>
+          <div class="trust-card"><strong>Veteran Owned</strong><span>Mission-focused execution</span></div>
+          <div class="trust-card"><strong>Central Florida</strong><span>Lake & Orange County coverage</span></div>
+          <div class="trust-card"><strong>Construction Focus</strong><span>Progress and records support</span></div>
         </div>
-        <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="visual-card" role="img" aria-label="Animated drone scanning construction site data points">
+        <div class="site-map"></div>
+        <div class="scan-line"></div>
+        <div class="drone d1">P4P</div>
+        <div class="drone d2">P4P</div>
+        <div class="drone d3">P4P</div>
+        <div class="data-point p1"></div>
+        <div class="data-point p2"></div>
+        <div class="data-point p3"></div>
+        <div class="data-point p4"></div>
+        <div class="visual-caption">
+          <strong>Repeatable viewpoints. Timestamped records. Organized delivery.</strong>
+          <span>Built for project updates, owner reports, milestone documentation, and visual inspection support.</span>
         </div>
-    </section>
-
-    <!-- What You Receive Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>What You Receive</h2>
-                <p>A consistent set of frames that drop into weekly reports: overview, repeatable angles, and close verification shots.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card reveal-on-scroll">
-                    <div class="service-image">
-                        <img src="https://www.genspark.ai/api/files/s/UqaxkXIU" alt="Consistent reference frames for progress documentation">
-                    </div>
-                    <div class="service-content">
-                        <h3>Consistent Reference Frames</h3>
-                        <p>A consistent set of frames that drop into weekly reports: overview, repeatable angles, and close verification shots. Deliverables structured for superintendents, inspectors, and owners to orient quickly.</p>
-                    </div>
-                </div>
-
-                <div class="service-card reveal-on-scroll">
-                    <div class="service-image">
-                        <img src="https://www.genspark.ai/api/files/s/iYvytYLB" alt="Site walkthrough video documentation">
-                    </div>
-                    <div class="service-content">
-                        <h3>Site Walkthrough Clips</h3>
-                        <p>Short walkthrough clip to verify access, staging, and active areas. Perfect for stakeholder updates without site visits. Clear visibility of project progress and current conditions.</p>
-                    </div>
-                </div>
-
-                <div class="service-card reveal-on-scroll">
-                    <div class="service-image">
-                        <img src="https://www.genspark.ai/api/files/s/7e5chUgw" alt="Organized timestamped deliverables">
-                    </div>
-                    <div class="service-content">
-                        <h3>Organized Deliverables</h3>
-                        <p>Named frames, consistent coverage, and clean packages for reporting. Compare progress week-over-week without guesswork. All files organized and timestamped for easy reference.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Contractors Section -->
-    <section id="why" class="why-section">
-        <div class="container">
-            <div class="section-header light">
-                <h2>Why Contractors Choose Uptown Drones</h2>
-                <p>Crews stay focused. Stakeholders get consistent evidence. Documentation stays organized.</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card reveal-on-scroll">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Track Weekly Changes</h3>
-                    <p>Compare grading, staging, and installation without walking the full site. Visual evidence of progress keeps everyone aligned.</p>
-                </div>
-
-                <div class="benefit-card reveal-on-scroll">
-                    <div class="benefit-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3>Verify Sequencing</h3>
-                    <p>Document what was installed, where it's staged, and what's ready next. Prevent sequencing issues before they become problems.</p>
-                </div>
-
-                <div class="benefit-card reveal-on-scroll">
-                    <div class="benefit-icon">
-                        <i class="fas fa-folder-open"></i>
-                    </div>
-                    <h3>Support Inspections & Records</h3>
-                    <p>Maintain a clean visual trail for owners, inspectors, and closeout packages. Documentation ready when you need it.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Verification Frames Gallery -->
-    <section id="verification" class="verification-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Verification Frames</h2>
-                <p>When questions arise later — fast answers without guesswork.</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item reveal-on-scroll" data-caption="Covered Walkway Progress Documentation">
-                    <img src="https://www.genspark.ai/api/files/s/tR1nyLEe" alt="Covered walkway construction progress">
-                    <div class="gallery-overlay">
-                        <span class="gallery-label">Covered Walkway Progress</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item reveal-on-scroll" data-caption="Storage Facility Completion Overview">
-                    <img src="https://www.genspark.ai/api/files/s/7e5chUgw" alt="Completed storage facility aerial view">
-                    <div class="gallery-overlay">
-                        <span class="gallery-label">Storage Facility Completion</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item reveal-on-scroll" data-caption="Commercial Building Exterior Documentation">
-                    <img src="https://www.genspark.ai/api/files/s/sg710jbA" alt="Modern commercial building exterior">
-                    <div class="gallery-overlay">
-                        <span class="gallery-label">Commercial Build Documentation</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item reveal-on-scroll" data-caption="Ground-Level Access Verification">
-                    <img src="https://www.genspark.ai/api/files/s/J7uMGHaz" alt="Ground-level walkway verification">
-                    <div class="gallery-overlay">
-                        <span class="gallery-label">Access & Staging Verification</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item reveal-on-scroll" data-caption="Lighting Installation Detail">
-                    <img src="https://www.genspark.ai/api/files/s/0QgSnCbN" alt="Lighting fixture installation detail">
-                    <div class="gallery-overlay">
-                        <span class="gallery-label">Lighting Installation Detail</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item reveal-on-scroll" data-caption="Interior Framework Progress">
-                    <img src="https://www.genspark.ai/api/files/s/a0l9ROVN" alt="Interior column framework construction">
-                    <div class="gallery-overlay">
-                        <span class="gallery-label">Interior Framework Progress</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item reveal-on-scroll" data-caption="Electrical Panel Verification">
-                    <img src="https://www.genspark.ai/api/files/s/KdbcnQyM" alt="Electrical panel installation verification">
-                    <div class="gallery-overlay">
-                        <span class="gallery-label">Electrical Installation Check</span>
-                    </div>
-                </div>
-
-                <div class="gallery-item reveal-on-scroll" data-caption="Conduit Installation Detail">
-                    <img src="https://www.genspark.ai/api/files/s/kNpGAflY" alt="Conduit installation detail shot">
-                    <div class="gallery-overlay">
-                        <span class="gallery-label">Conduit Installation Detail</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Lightbox -->
-    <div id="lightbox" class="lightbox">
-        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-        <div class="lightbox-content">
-            <img id="lightbox-image" src="" alt="">
-            <div id="lightbox-caption"></div>
-        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p>Structured, simple, repeatable.</p>
-            </div>
-            <div class="steps-container">
-                <div class="step reveal-on-scroll">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fas fa-map-marked-alt"></i>
-                    </div>
-                    <h3>Set Viewpoints</h3>
-                    <p>We define repeatable angles (overview + corridor + key areas) based on your project needs and documentation requirements.</p>
-                </div>
-
-                <div class="step-connector"></div>
-
-                <div class="step reveal-on-scroll">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
-                    <h3>Capture on Schedule</h3>
-                    <p>Weekly, bi-weekly, or milestone-based flights depending on your cadence and project phase. Consistent timing, consistent results.</p>
-                </div>
-
-                <div class="step-connector"></div>
-
-                <div class="step reveal-on-scroll">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-folder-open"></i>
-                    </div>
-                    <h3>Deliver Organized Files</h3>
-                    <p>Named frames, consistent coverage, and a clean package ready for your reporting workflow. Drop straight into your documentation.</p>
-                </div>
-            </div>
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Services</span>
+          <h2>Drone documentation for the people who need proof, not guesswork.</h2>
         </div>
-    </section>
+        <p>Uptown Drones provides visual documentation support. We do not provide engineering opinions, survey-grade certification, or sealed inspection reports.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🏗️</div>
+          <h3>Construction Progress Reports</h3>
+          <p>Repeatable aerial viewpoints, overview images, and short clips that make weekly or milestone updates easier to understand.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">📍</div>
+          <h3>Milestone Documentation</h3>
+          <p>Structured visual records for site conditions, phase completion, staging, access routes, rooflines, facade areas, and closeout packages.</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🏢</div>
+          <h3>SB-4D Imaging Support</h3>
+          <p>Exterior drone imagery for engineers, property managers, HOAs, condo associations, and structural inspection firms needing organized visual records.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Project-Friendly Pricing</h2>
-                <p>Pricing that matches project cadence — not one-off photo shoots</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card reveal-on-scroll">
-                    <h3>Milestone Based</h3>
-                    <p class="pricing-description">Perfect for phased projects</p>
-                    <div class="price">
-                        <span class="price-currency">$</span>
-                        <span class="price-amount">Custom</span>
-                        <span class="price-period">per visit</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Pre-defined viewpoints</li>
-                        <li><i class="fas fa-check"></i> Organized deliverables</li>
-                        <li><i class="fas fa-check"></i> Project milestone documentation</li>
-                        <li><i class="fas fa-check"></i> Fast turnaround</li>
-                        <li><i class="fas fa-check"></i> Named & timestamped files</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Get Quote</a>
-                </div>
-
-                <div class="pricing-card featured reveal-on-scroll">
-                    <div class="popular-badge">Most Popular</div>
-                    <h3>Weekly Cadence</h3>
-                    <p class="pricing-description">Ideal for active construction</p>
-                    <div class="price">
-                        <span class="price-currency">$</span>
-                        <span class="price-amount">Custom</span>
-                        <span class="price-period">per month</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Weekly scheduled flights</li>
-                        <li><i class="fas fa-check"></i> Repeatable viewpoints</li>
-                        <li><i class="fas fa-check"></i> Progress comparison sets</li>
-                        <li><i class="fas fa-check"></i> Priority scheduling</li>
-                        <li><i class="fas fa-check"></i> Video walkthrough clips</li>
-                        <li><i class="fas fa-check"></i> Organized file structure</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary">Book Now</a>
-                </div>
-
-                <div class="pricing-card reveal-on-scroll">
-                    <h3>Custom Package</h3>
-                    <p class="pricing-description">Large projects & ongoing documentation</p>
-                    <div class="price">
-                        <span class="price-amount">Custom</span>
-                        <span class="price-period">quote</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Flexible scheduling</li>
-                        <li><i class="fas fa-check"></i> Multi-site coordination</li>
-                        <li><i class="fas fa-check"></i> Custom viewpoint planning</li>
-                        <li><i class="fas fa-check"></i> Dedicated support</li>
-                        <li><i class="fas fa-check"></i> Extended coverage areas</li>
-                        <li><i class="fas fa-check"></i> Custom deliverable formats</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline">Contact Us</a>
-                </div>
-            </div>
+  <section class="section section-alt" id="deliverables">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Sample Deliverable Package</span>
+          <h2>What clients receive after the flight.</h2>
         </div>
-    </section>
+        <p>Delivery is organized so superintendents, owners, engineers, and managers can find what they need without digging through random files.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card"><h3>Timestamped Aerial Photos</h3><p>High-resolution visual records with date/time context for project reports and progress comparison.</p></article>
+        <article class="card"><h3>Organized Folders</h3><p>Files grouped by site zone, building face, elevation, roofline, or area of concern depending on project needs.</p></article>
+        <article class="card"><h3>Short Walkthrough Clips</h3><p>Brief clips for stakeholder updates, access verification, staging review, and current condition documentation.</p></article>
+        <article class="card"><h3>Repeatable Viewpoint Plan</h3><p>Consistent angles across visits so changes can be compared week-over-week or milestone-to-milestone.</p></article>
+        <article class="card"><h3>Optional Marked-Up PDF</h3><p>Summary document with callouts when requested. Useful for review, internal notes, and communication.</p></article>
+        <article class="card"><h3>Cloud Delivery Link</h3><p>Clean file delivery link so your team can access documentation without chasing attachments.</p></article>
+      </div>
+    </div>
+  </section>
 
-    <!-- Trust Builders Section -->
-    <section id="trust" class="trust-section">
-        <div class="container">
-            <div class="trust-content">
-                <div class="trust-left reveal-on-scroll">
-                    <h2>Veteran Precision. Construction-Grade Results.</h2>
-                    <p>Military veteran-owned and operated with the same attention to detail, reliability, and mission-focused execution you'd expect from veterans in the field.</p>
-                    <div class="certifications">
-                        <div class="cert-badge">
-                            <i class="fas fa-medal"></i>
-                            <span>Veteran Owned</span>
-                        </div>
-                        <div class="cert-badge">
-                            <i class="fas fa-certificate"></i>
-                            <span>FAA Part 107</span>
-                        </div>
-                        <div class="cert-badge">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Fully Insured</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="trust-right reveal-on-scroll">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="100">0</div>
-                            <div class="stat-label">Projects Documented</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="5000">0</div>
-                            <div class="stat-label">Flight Hours</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="99">0</div>
-                            <div class="stat-suffix">%</div>
-                            <div class="stat-label">On-Time Delivery</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">How It Works</span>
+          <h2>Simple, structured, repeatable.</h2>
         </div>
-    </section>
+        <p>Designed for crews that need documentation without creating extra chaos.</p>
+      </div>
+      <div class="grid-3 process">
+        <article class="card"><h3>Set Viewpoints</h3><p>We define overview, corridor, roofline, facade, staging, and key area views based on your project needs.</p></article>
+        <article class="card"><h3>Capture on Schedule</h3><p>Weekly, bi-weekly, milestone-based, or as-needed flights depending on cadence and site conditions.</p></article>
+        <article class="card"><h3>Deliver Organized Files</h3><p>You receive named, timestamped, structured files ready for reporting, review, or internal records.</p></article>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="contact-background"></div>
-        <div class="container">
-            <div class="section-header light">
-                <h2>Book Your First Flight</h2>
-                <p>Send project location + preferred cadence. If you have a target list of viewpoints, include it.</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-form-wrapper reveal-on-scroll">
-                    <form id="contact-form" class="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="company">Company</label>
-                                <input type="text" id="company" name="company">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone *</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="location">Project Location *</label>
-                            <input type="text" id="location" name="location" placeholder="City, County, or Address" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cadence">Preferred Cadence *</label>
-                            <select id="cadence" name="cadence" required>
-                                <option value="">Select frequency...</option>
-                                <option value="weekly">Weekly</option>
-                                <option value="bi-weekly">Bi-weekly</option>
-                                <option value="milestone">Milestone Based</option>
-                                <option value="as-needed">As Needed</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Project Details / Viewpoint List</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, specific areas to document, or any special requirements..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-large">Request Flight Schedule</button>
-                        <div id="form-message" class="form-message"></div>
-                    </form>
-                </div>
-                <div class="contact-info reveal-on-scroll">
-                    <div class="contact-info-card">
-                        <h3>Contact Information</h3>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Email</strong>
-                                <a href="mailto:Uptowndronesllc@gmail.com">Uptowndronesllc@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <strong>Phone</strong>
-                                <a href="tel:407-448-0003">407-448-0003</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Service Area</strong>
-                                <span>Central Florida Heavy Civil</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section class="section section-alt" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Pricing</span>
+          <h2>Starting points that make budgeting easier.</h2>
         </div>
-    </section>
+        <p>Final pricing depends on location, airspace, site size, flight frequency, deliverables, and insurance/access requirements.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Milestone Flight</h3>
+          <div class="price"><strong>$350</strong><span>starting at</span></div>
+          <ul class="check-list">
+            <li>Pre-defined viewpoints</li>
+            <li>Organized timestamped deliverables</li>
+            <li>Milestone or phase documentation</li>
+            <li>Email delivery link</li>
+          </ul>
+          <p><a class="btn btn-secondary" href="mailto:Uptowndronesllc@gmail.com?subject=Drone%20Progress%20Report%20Request&body=Project%20Location:%0D%0AProject%20Type:%0D%0APreferred%20Cadence:%0D%0ATimeline:%0D%0A">Request Milestone Flight</a></p>
+        </article>
+        <article class="card">
+          <span class="ribbon">Most Popular</span>
+          <h3>Weekly Progress Package</h3>
+          <div class="price"><strong>$750</strong><span>starting / month</span></div>
+          <ul class="check-list">
+            <li>Weekly scheduled flights</li>
+            <li>Repeatable viewpoints</li>
+            <li>Progress comparison sets</li>
+            <li>Short walkthrough clips</li>
+          </ul>
+          <p><a class="btn btn-primary" href="mailto:Uptowndronesllc@gmail.com?subject=Drone%20Progress%20Report%20Request&body=Project%20Location:%0D%0AProject%20Type:%0D%0APreferred%20Cadence:%0D%0ATimeline:%0D%0A">Start Weekly Package</a></p>
+        </article>
+        <article class="card">
+          <h3>Multi-Site / Custom</h3>
+          <div class="price"><strong>Quote</strong><span>required</span></div>
+          <ul class="check-list">
+            <li>Flexible scheduling</li>
+            <li>Multi-site coordination</li>
+            <li>Custom viewpoint planning</li>
+            <li>Custom deliverable formats</li>
+          </ul>
+          <p><a class="btn btn-secondary" href="mailto:Uptowndronesllc@gmail.com?subject=Drone%20Progress%20Report%20Request&body=Project%20Location:%0D%0AProject%20Type:%0D%0APreferred%20Cadence:%0D%0ATimeline:%0D%0A">Request Custom Quote</a></p>
+        </article>
+      </div>
+      <p class="notice">Important: Uptown Drones provides drone imaging and documentation support. Engineering analysis, structural opinions, survey-grade measurements, and sealed inspection reports must be performed by properly licensed professionals.</p>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <div class="logo-badge">UD</div>
-                        <div class="logo-text">
-                            <span class="logo-main">Uptown Drones LLC</span>
-                            <span class="logo-sub">Veteran Owned & Operated</span>
-                        </div>
-                    </div>
-                    <p>Professional aerial progress reporting for construction and heavy civil projects across Central Florida.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Progress Documentation</a></li>
-                        <li><a href="#services">Verification Frames</a></li>
-                        <li><a href="#services">Site Walkthroughs</a></li>
-                        <li><a href="#pricing">Custom Packages</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:Uptowndronesllc@gmail.com"><i class="fas fa-envelope"></i> Uptowndronesllc@gmail.com</a></li>
-                        <li><a href="tel:407-448-0003"><i class="fas fa-phone"></i> 407-448-0003</a></li>
-                        <li><i class="fas fa-map-marker-alt"></i> Central Florida</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Uptown Drones LLC. All rights reserved. | FAA Part 107 Certified & Insured</p>
-            </div>
+  <section class="section" id="case-study">
+    <div class="container">
+      <div class="case-study">
+        <div>
+          <span class="eyebrow">Website Intelligence Audit Case Study</span>
+          <h2>We used the same audit process on this site.</h2>
+          <p class="lead">This rebuild removed weak trust signals, added direct CTAs, clarified deliverables, added SB-4D positioning, improved local SEO, and made the site easier to act on.</p>
         </div>
-    </footer>
+        <div class="grid-2">
+          <div class="case-metric"><strong>Replaced</strong><span>0-stat credibility block with honest trust signals</span></div>
+          <div class="case-metric"><strong>Added</strong><span>SB-4D landing page for engineering and condo outreach</span></div>
+          <div class="case-metric"><strong>Improved</strong><span>Email and phone CTAs with static-site-safe links</span></div>
+          <div class="case-metric"><strong>Expanded</strong><span>Local SEO targeting across Central Florida cities</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="js/main.js"></script>
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <div class="contact-panel">
+        <div>
+          <span class="eyebrow">Book Your First Flight</span>
+          <h2>Send the project location and preferred cadence.</h2>
+          <p class="lead">Need weekly site progress documentation without pulling your superintendent off the job? Send the location and preferred cadence. I’ll reply with a simple flight plan and quote.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:Uptowndronesllc@gmail.com?subject=Drone%20Progress%20Report%20Request&body=Project%20Location:%0D%0AProject%20Type:%0D%0APreferred%20Cadence:%0D%0ATimeline:%0D%0A">Email Project Details</a>
+            <a class="btn btn-secondary" href="tel:4074480003">Call Tony: 407-448-0003</a>
+          </div>
+        </div>
+        <div class="contact-list" aria-label="Contact information">
+          <div class="contact-item"><span>Email</span><a href="mailto:Uptowndronesllc@gmail.com">Uptowndronesllc@gmail.com</a></div>
+          <div class="contact-item"><span>Phone</span><a href="tel:4074480003">407-448-0003</a></div>
+          <div class="contact-item"><span>Service Area</span>Eustis, Mount Dora, Leesburg, Tavares, Apopka, Orlando, Sanford, The Villages, Lake County, Orange County, Central Florida</div>
+          <div class="contact-item"><span>Credentials</span>FAA Part 107 Certified · Fully Insured · Veteran Owned & Operated</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="logo" href="index.html" aria-label="Uptown Drones LLC home">
+        <span class="logo-mark" aria-hidden="true">UD</span>
+        <span>Uptown Drones LLC <small>Veteran Owned & Operated</small></span>
+      </a>
+      <p>Professional aerial progress reporting and visual documentation for Central Florida construction, property, and inspection support workflows.</p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="#services">Services</a><br><a href="#pricing">Pricing</a><br><a href="sb4d-drone-imaging.html">SB-4D Support</a><br><a href="#contact">Contact</a></p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p><a href="mailto:Uptowndronesllc@gmail.com">Uptowndronesllc@gmail.com</a><br><a href="tel:4074480003">407-448-0003</a><br>Central Florida</p>
+    </div>
+  </div>
+  <div class="container">
+    <p>© <span data-year></span> Uptown Drones LLC. FAA Part 107 Certified & Insured. Drone imaging/documentation support only; no engineering judgment or sealed inspection reports.</p>
+  </div>
+</footer>
+<script>
+
+(function(){
+  const btn = document.querySelector('[data-menu-button]');
+  const links = document.querySelector('[data-nav-links]');
+  if(btn && links){
+    btn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  const year = document.querySelector('[data-year]');
+  if(year){ year.textContent = new Date().getFullYear(); }
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor)=>{
+    anchor.addEventListener('click', ()=>{
+      if(links && links.classList.contains('open')){
+        links.classList.remove('open');
+        btn && btn.setAttribute('aria-expanded','false');
+      }
+    });
+  });
+})();
+
+</script>
 </body>
 </html>
